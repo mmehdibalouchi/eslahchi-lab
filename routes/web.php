@@ -27,7 +27,7 @@ Route::prefix('softwares')->group(function (){
     Route::get('', function (){
         return view('softwares.main');
     });
-    Route::prefix('imhrc')->group(function (){
+    Route::prefix('cdap')->group(function (){
         Route::post('result', 'IMHRCController@process');
         Route::get('', function () {
             return view('softwares.imhrc.main');
