@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" />
     <link rel="stylesheet" href="/css/app.css">
     <style>
         .fakeimg {
@@ -23,24 +24,24 @@
         </ul>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/images/banners/1.jpg" alt="Los Angeles" width="100%" height="400px">
+                <img src="/images/banners/1.jpg" alt="Eslahchi" width="100%" height="400px">
                 <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>We had such a great time in LA!</p>
+                    <h3></h3>
+                    <p></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/images/banners/2.jpg" alt="Chicago" width="100%" height="400px">
+                <img src="/images/banners/2.jpg" alt="BIO" width="100%" height="400px">
                 <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago!</p>
+                    <h3></h3>
+                    <p></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/images/banners/3.jpg" alt="New York" width="100%" height="400px">
+                <img src="/images/banners/3.jpg" alt="Softwares" width="100%" height="400px">
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3></h3>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -51,21 +52,21 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top ">
+    {{--sticky-top--}}
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
         <div class="collapse navbar-collapse d-flex justify-content-center" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="algorithms">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
+                    <a class="nav-link" href="#">Softwares</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Events</a>
@@ -90,10 +91,18 @@
             <p>footer</p>
         </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/js/app.js"></script>
+
+    <script>
+        function testSession() {
+            window.sessionStorage.setItem("algorithms", ["a", "b"])
+        }
+    </script>
 
 </body>
 </html>

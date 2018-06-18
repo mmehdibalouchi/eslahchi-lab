@@ -1,5 +1,20 @@
 body {background-color: #333333;}
 
+.parameter {
+    width: 100px;
+}
+
+div , fieldset{
+    /*border: solid 2px;*/
+}
+
+.show-when-checked{
+    display: none;
+    width: 100px;
+}
+
+.msf-form form fieldset { display: none; overflow: hidden; }
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 *, *:before, *:after {
     margin: 0;
@@ -30,10 +45,12 @@ ul {
     /*margin: 0 auto;*/
 }
 
+/*=====================Breadcrumbs-css=======================*/
 .breadcrumbs-css {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     background-color: #f5f5f5;
+    margin-left: 0px;
 }
 
 .breadcrumbs-css ul {
@@ -168,3 +185,17 @@ ul {
         display: none;
     }
 }
+
+/*.searchable-container{margin:20px 0 0 0}*/
+/*.searchable-container label.btn-default.active{background-color:#007ba7;color:#FFF}*/
+/*.searchable-container label.btn-default{width:90%;border:1px solid #efefef;margin:5px; box-shadow:5px 8px 8px 0 #ccc;}*/
+/*.searchable-container label .bizcontent{width:100%;}*/
+/*.searchable-container .btn-group{width:90%}*/
+/*.searchable-container .btn span.glyphicon{*/
+    /*opacity: 0;*/
+/*}*/
+/*.searchable-container .btn.active span.glyphicon {*/
+    /*opacity: 1;*/
+/*}*/
+
+

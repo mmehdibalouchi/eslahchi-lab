@@ -11,17 +11,44 @@
 |
 */
 
-//Route::get('/projects/imhrc', function () {
-//    return view('projects.imhrc.main');
+//Route::get('/softwares/imhrc', function () {
+//    return view('softwares.imhrc.main');
 //});
-Route::prefix('projects')->group(function (){
-
+Route::get('test', function() {
+    $arr = explode("\n", File::get('imhrc/1527278624.4628/results/Fmeasure_table.txt'));
+    for ($i =0 ; $i<sizeof($arr); $i++)
+        $arr[$i] = explode(",", $arr[$i]);
+    dd($arr);
+});
+Route::get('', function (){
+    return view('softwares.main');
+});
+Route::prefix('softwares')->group(function (){
+    Route::get('', function (){
+        return view('softwares.main');
+    });
     Route::prefix('imhrc')->group(function (){
+        Route::post('result', 'IMHRCController@process');
         Route::get('', function () {
-            return view('projects.imhrc.main');
+            return view('softwares.imhrc.main');
         });
-        Route::get('algorithms', function () {
-            return view('projects.imhrc.algorithms');
+        Route::get('start', function () {
+            return view('softwares.imhrc.start');
+        });
+        Route::get('results', function () {
+            return view('softwares.imhrc.results');
+        });
+    });
+
+    Route::prefix('dmn')->group(function (){
+        Route::get('', function () {
+            return view('softwares.dmn.main');
+        });
+        Route::get('start', function () {
+            return view('softwares.dmn.start');
+        });
+        Route::get('results', function () {
+            return view('softwares.dmn.results');
         });
     });
 });
