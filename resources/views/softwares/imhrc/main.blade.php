@@ -16,7 +16,7 @@
             <p>Our algorithm provides an accurate and scalable method to detect and predict protein complexes from PPI networks. In our assessment four experimental yeast PPI datasets have been used which include Gavin (Gavin, et al., 2006), Collins (Collins, et al., 2007), Krogan Core and Krogan Extended (Krogan, et al., 2006). All these dataset were weighted. For evaluating the result of the methods, two gold standards were used as benchmarks, the MIPS catalog of protein complexes and the Gene Ontology based protein complex annotations from SGD. To assess the robustness of IMHRC against other complex detection algorithms, we selected seven of the best algorithms in this topic. These algorithms include: AP (Frey and Dueck, 2007), CFinder (Palla, et al., 2005), CMC (Liu, et al., 2009), MCL (Pereira‐Leal, et al., 2004), ClusterONE (Nepusz, et al., 2012), Core of RNSC (King, et al., 2004) and RRW (Macropol, et al., 2009).</p>
             <br>
             <div class="text-center">
-                <a href="/softwares/imhrc/start"><button type="button" class="btn btn-success">START</button></a>
+                <a href="/softwares/cdap/start"><button type="button" class="btn btn-success">START</button></a>
             </div>
         </div>
     </div>
