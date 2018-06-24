@@ -41,7 +41,7 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        @if($criterias[$i]["value"] != "ACC")
+                                        @if($criterias[$i]["value"] != "ACC" && $criterias[$i]["value"] != "AUMF")
                                             <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
                                         @endif
 
@@ -69,8 +69,9 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
-
+                                        @if($criterias[$i]["value"] != "ACC" && $criterias[$i]["value"] != "AUMF")
+                                            <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
+                                        @endif
                                     </div>
                             @endif
                         @endfor

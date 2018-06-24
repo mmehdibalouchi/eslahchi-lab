@@ -23,6 +23,7 @@ class IMHRCController extends Controller
         "MMR" => "MMR",
         "Fmeasure" => "Precision, Recall, Fmeasure",
         "FmeasurePlus" => "Precision+, Recall+, Fmeasure+",
+        "AUMF" => "AUMF"
     ];
     public function __construct()
     {

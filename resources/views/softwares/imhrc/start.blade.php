@@ -150,6 +150,12 @@
                             Precision+, Recall+, Fmeasure+
                         </label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="criteria5" value="AUMF">
+                        <label class="form-check-label" for="criteria5">
+                            AUMF
+                        </label>
+                    </div>
 
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-previous">Previous</button>

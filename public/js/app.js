@@ -29,7 +29,7 @@ function changeInputDisable(inputId, checkElementId) {
 function imhrcResult() {
     var files;
     var algorithmNames = ['AP', 'CFinder', 'CMC', 'MCL', 'MyClusterONE', 'RNSC', 'RRW', 'IMHRC', 'custom'];
-    var criteriasIds = ["criteria1", "criteria2", "criteria3", "criteria4"];
+    var criteriasIds = ["criteria1", "criteria2", "criteria3", "criteria4", "criteria5"];
     var customFilesIds = ['customAlgorithm', 'customDataset', 'customGoldstandard'];
     formData = new FormData(),
     params   = $("#form").serializeArray(),
