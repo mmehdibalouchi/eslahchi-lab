@@ -33,6 +33,8 @@ class IMHRCController extends Controller
     {
         $now = microtime(true);
         Storage::copy('softwares/imhrc/source/MyClusteringPackage51.jar', 'softwares/imhrc/runs/'.$now.'/MyClusteringPackage51.jar');
+        if(File::exists('../storage/app/softwares/imhrc/source/programsFile'))
+            File::copyDirectory('../storage/app/softwares/imhrc/source/programsFile', 'softwares/imhrc/runs/'.$now.'programsFile');
         Storage::copy('softwares/imhrc/goldstandards/test.txt', 'softwares/imhrc/runs/'.$now.'/assets/sourcesofdata/gold_standard/test.txt');
         if($request->hasFile('customDataset')) {
             $request->file('customDataset')->storeAs('softwares/imhrc/runs/' . $now . '/dataset/', 'custom.txt');
