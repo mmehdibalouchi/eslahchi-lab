@@ -82,7 +82,7 @@ class IMHRCController extends Controller
                 Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
             }
         }
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt > ../../logs/'.$now.'.txt', $javaCommandResult);
+        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && sudo java -jar MyClusteringPackage51.jar input.txt > ../../logs/'.$now.'.txt', $javaCommandResult);
 //        Storage::append('softwares/imhrc/logs/'.$now.'.txt', $javaCommandResult);
         $algorithmsFiles = '';
         foreach($algorithms as $algo) {
@@ -95,7 +95,7 @@ class IMHRCController extends Controller
         }
 
         Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
-        $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
+        $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && sudo python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
             .' criteria='.$request->input('criterias', 'ACC').' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/softwares/imhrc/runs/'.$now.'/results/';
         var_dump($pythonCommand);
