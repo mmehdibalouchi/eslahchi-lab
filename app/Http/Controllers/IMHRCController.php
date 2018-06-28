@@ -32,12 +32,12 @@ class IMHRCController extends Controller
     public function process(Request $request)
     {
         $now = microtime(true);
-        Storage::copy('softwares/imhrc/source/MyClusteringPackage51.jar', 'softwares/imhrc/runs/'.$now.'/MyClusteringPackage51.jar');
-        if(File::exists('../storage/app/softwares/imhrc/source/programsFile'))
-            File::copyDirectory('../storage/app/softwares/imhrc/source/programsFile', '../storage/app/softwares/imhrc/runs/'.$now.'/programsFile');
-        Storage::copy('softwares/imhrc/goldstandards/test.txt', 'softwares/imhrc/runs/'.$now.'/assets/sourcesofdata/gold_standard/test.txt');
+        Storage::copy('../../../../home/mbalouchi/softwares/imhrc/source/MyClusteringPackage51.jar', '../../../../home/mbalouchi/softwares/imhrc/runs/'.$now.'/MyClusteringPackage51.jar');
+        if(File::exists('../../../../../home/mbalouchi/storage/app/softwares/imhrc/source/programsFile'))
+            File::copyDirectory('../../../../../home/mbalouchi/storage/app/softwares/imhrc/source/programsFile', '../storage/app/softwares/imhrc/runs/'.$now.'/programsFile');
+        Storage::copy('../../../../home/mbalouchi/softwares/imhrc/goldstandards/test.txt', '../../../../home/mbalouchi/softwares/imhrc/runs/'.$now.'/assets/sourcesofdata/gold_standard/test.txt');
         if($request->hasFile('customDataset')) {
-            $request->file('customDataset')->storeAs('softwares/imhrc/runs/' . $now . '/dataset/', 'custom.txt');
+            $request->file('customDataset')->storeAs('../../../../home/mbalouchi/softwares/imhrc/runs/' . $now . '/dataset/', 'custom.txt');
             $datasetAddress = 'dataset/custom.txt';
             $datasetPyAddress = '../runs/'.$now.'/dataset/custom.txt';
         }
@@ -47,7 +47,7 @@ class IMHRCController extends Controller
         }
 
         if($request->hasFile('customGoldstandard')) {
-            $request->file('customGoldstandard')->storeAs('softwares/imhrc/runs/' . $now . '/goldstandard/', 'custom.txt');
+            $request->file('customGoldstandard')->storeAs('../../../../home/mbalouchi/softwares/imhrc/runs/' . $now . '/goldstandard/', 'custom.txt');
             $goldstandardAddress = '../runs/'.$now.'/goldstandard/custom.txt';
         }
         else
@@ -59,7 +59,7 @@ class IMHRCController extends Controller
         {
 //            var_dump($algo);
             if($algo == "custom" && $request->hasFile('customAlgorithm'))
-                $request->file('customAlgorithm')->storeAs('softwares/imhrc/runs/'.$now.'/algorithm/','custom.txt');
+                $request->file('customAlgorithm')->storeAs('../../../../home/mbalouchi/softwares/imhrc/runs/'.$now.'/algorithm/','custom.txt');
             else
             {
                 $line = $this->algorithmsParams[$algo]["command"].' ';
@@ -79,13 +79,13 @@ class IMHRCController extends Controller
                     else
                         $line = $line.' '.'-'.$id.' '.$request->input($algo.'-'.str_replace(" ", "%20", $name), 0);
                 }
-                Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
+                Storage::append('../../../../home/mbalouchi/softwares/imhrc/runs/'.$now.'/input.txt', $line);
             }
         }
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
+        system('cd ../../../../../home/mbalouchi/storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
         $algorithmsFiles = '';
         foreach($algorithms as $algo) {
-//            var_dump('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["command"]);
+//            var_dump('../../../../home/mbalouchi/softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["command"]);
             if($algo == "custom")
                 $algorithmsFiles = '../runs/'.$now.'/algorithm/custom.txt';
             else
