@@ -82,7 +82,8 @@ class IMHRCController extends Controller
                 Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
             }
         }
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
+        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
+        Storage::append('software/imhrc/logs/'.$now.'.txt', $javaCommandResult);
         $algorithmsFiles = '';
         foreach($algorithms as $algo) {
 //            var_dump('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["command"]);
