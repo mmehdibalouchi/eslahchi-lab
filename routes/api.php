@@ -20,4 +20,7 @@ Route::prefix('softwares')->group(function (){
     Route::prefix('imhrc')->group(function (){
         Route::post('result', 'IMHRCController@process');
     });
+    Route::prefix('dmn')->group(function (){
+        Route::post('result', 'DMNController@process');
+    });
 });
