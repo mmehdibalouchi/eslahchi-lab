@@ -14,6 +14,7 @@
                                     <a class="nav-item nav-link" id={{"nav-".$criterias[$i]["value"]."-tab"}} data-toggle="tab" href={{"#nav-".$criterias[$i]["value"]}} role="tab" aria-controls="nav-home" aria-selected="true">{{$criterias[$i]["name"]}}</a>
                                 @endif
                             @endfor
+                                <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-home" aria-selected="true">Download</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -75,6 +76,18 @@
                                     </div>
                             @endif
                         @endfor
+                            <div class="tab-pane text-center fade" id="nav-download" role="tabpanel" aria-labelledby="nav-download-tab">
+                                <br><br>
+                                <table class="table">
+                                    <tbody>
+                                            @foreach($algorithmOutputs as $algo => $address)
+                                                <tr>
+                                                    <td scope="col"><a href={{"/".$path.$address}} download>{{$algo}}</a></td>
+                                                </tr>
+                                            @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                     </div>
                 </div>
             </div>

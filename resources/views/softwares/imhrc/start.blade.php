@@ -137,18 +137,21 @@
                         <label class="form-check-label" for="criteria2">
                             MMR
                         </label>
+                        <input type="text" class="form-control parameter" placeholder="">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="criteria3" value="Fmeasure">
                         <label class="form-check-label" for="criteria3">
                             Precision, Recall, Fmeasure
                         </label>
+                        <input type="text" class="form-control parameter" placeholder="">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="criteria4" value="FmeasurePlus">
                         <label class="form-check-label" for="criteria4">
                             Precision+, Recall+, Fmeasure+
                         </label>
+                        <input type="text" class="form-control parameter" placeholder="">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="criteria5" value="AUMF">

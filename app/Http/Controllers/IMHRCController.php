@@ -82,26 +82,30 @@ class IMHRCController extends Controller
                 Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
             }
         }
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt > ../../logs/'.$now.'.txt', $javaCommandResult);
-//        Storage::append('softwares/imhrc/logs/'.$now.'.txt', $javaCommandResult);
+        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
+
         $algorithmsFiles = '';
+        $algorithmOutputs = [];
         foreach($algorithms as $algo) {
-//            var_dump('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["command"]);
             if($algo == "custom")
-                $algorithmsFiles = '../runs/'.$now.'/algorithm/custom.txt';
-            else
-                $algorithmsFiles = $algorithmsFiles . storage_path().'/app/'.Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0] . ',';
+                $algorithmsFiles = $algorithmsFiles . '../runs/' . $now . '/algorithm/custom.txt';
+            else {
+                $address = Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0];
+                $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
+                $addArr = explode("/", $address);
+                $algorithmOutputs[$algo] = $addArr[sizeof($addArr)-2].'/'.$addArr[sizeof($addArr)-1];
+            }
 
         }
-
         Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
         $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
             .' criteria='.$request->input('criterias', 'ACC').' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/softwares/imhrc/runs/'.$now.'/results/';
         var_dump($pythonCommand);
         system($pythonCommand, $res);
-
+        sleep(1);
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/results', 'imhrc/'.$now.'/results');
+        File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', 'imhrc/'.$now.'/results');
         var_dump($res);
         $criteriasInput = explode(",", $request->criterias);
         foreach ($criteriasInput as $cri) {
@@ -111,7 +115,7 @@ class IMHRCController extends Controller
             var_dump("table", $t);
             $criterias[] = ["value" => $cri, "name" => $this->criterias[$cri], "table" => $t];
         }
-        return view('softwares.imhrc.results', ['criterias' => $criterias, 'path' => 'imhrc/'.$now.'/results/']);
+        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/']);
 //        return system();
 //        return $res;
         return redirect('softwares/imhrc/results');
