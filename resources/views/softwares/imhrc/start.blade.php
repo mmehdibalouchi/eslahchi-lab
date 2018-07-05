@@ -25,7 +25,7 @@
                     @include('components.imhrc.algorithm', ['name' => 'MCL', 'params' => ['Inflation(I)'], 'defaults' => ['4.7']])
                     @include('components.imhrc.algorithm', ['name' => 'MyClusterONE', 'params' => [], 'defaults' => []])
                     @include('components.imhrc.algorithm', ['name' => 'RNSC', 'params' => ['Shuffling diversification length(d)', 'Diversification frequency(D)', 'Number of experiments(e)', 'Naive stopping tolerance(n)', 'Scaled stopping tolerance(N)', 'Tabu length(t)', 'Tabu tolerance(T)'], 'defaults' => ['9', '10', '3', '20', '15', '100', '1']])
-                    @include('components.imhrc.algorithm', ['name' => 'RRW', 'params' => ['Restart probability(r)', 'Overlap threshold(overlap)', 'Early cutoff(lambda)', 'Minimum cluster size(min)', 'Maximum cluster size(max)'], 'defaults' => ['0.6', '0.1', '0.6', '3', '1000']])
+                    @include('components.imhrc.algorithm', ['name' => 'RRW', 'params' => ['Restart probability(r)', 'Overlap threshold(overlap)', 'Early cutoff(lambda)'], 'defaults' => ['0.6', '0.1', '0.6']])
                     @include('components.imhrc.algorithm', ['name' => 'IMHRC', 'params' => ['Minimum size of cluster(min-size)', 'Maximum size of cluster(max-size)', 'Hub retrieving threshold(black-list)(γ)', 'Hub removing threshold (black-list)(β)', 'Overlap threshold(max-overlap)', 'Growing penalty(growth-penalty)', 'Hub retrieving penalty(back-penalty)', 'Minimum Density(min-density)'], 'defaults' => ['3', '1000', '0.014', '0.048', '0.78', '1', '1', '0.2']])
                     <div class="row">
                         <div class="col-sm-1">

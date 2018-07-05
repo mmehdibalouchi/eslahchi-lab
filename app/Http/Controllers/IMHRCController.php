@@ -15,7 +15,7 @@ class IMHRCController extends Controller
         'MCL' => ['command' => 'MCL1', 'outputdir' => 'MCL', 'params' => ['Inflation(I)' => 'I']],
         'MyClusterONE' => ['command' => 'MyClusterONE', 'outputdir' => 'MyClusterONE', 'params' => []],
         'RNSC' => ['command' => 'RNSC', 'outputdir' => 'RNSC', 'params' => ['Shuffling diversification length(d)' => 'd', 'Diversification frequency(D)' => 'D', 'Number of experiments(e)' => 'e', 'Naive stopping tolerance(n)' => 'n', 'Scaled stopping tolerance(N)' => 'N', 'Tabu length(t)' => 't', 'Tabu tolerance(T)' => 'T']],
-        'RRW' => ['command' => 'RRW', 'outputdir' => 'RRW', 'params' => ['Restart probability(r)' => 'r', 'Overlap threshold(overlap)' => 'overlap', 'Early cutoff(lambda)' => 'lambda', 'Minimum cluster size(min)' => 'min', 'Maximum cluster size(max)' => 'max']],
+        'RRW' => ['command' => 'RRW', 'outputdir' => 'RRW', 'params' => ['Restart probability(r)' => 'r', 'Overlap threshold(overlap)' => 'overlap', 'Early cutoff(lambda)' => 'lambda']],
         'IMHRC' => ['command' => 'XAlgorithm', 'outputdir' => 'XAlgorithm', 'params' => ['Minimum size of cluster(min-size)' => 'min-size', 'Maximum size of cluster(max-size)' => 'max-size', 'Hub retrieving threshold(black-list)(γ)' => 'black-list(γ)', 'Hub removing threshold (black-list)(β)' => 'black-list(β)', 'Overlap threshold(max-overlap)' => 'max-overlap', 'Growing penalty(growth-penalty)' => 'growth-penalty', 'Hub retrieving penalty(back-penalty)' => 'back-penalty', 'Minimum Density(min-density)' => 'min-density']]
     ];
     protected $criterias = [
