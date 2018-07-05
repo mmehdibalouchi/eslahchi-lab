@@ -83,7 +83,7 @@ class IMHRCController extends Controller
             }
         }
         system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
-
+        var_dump('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
         $algorithmsFiles = '';
         $algorithmOutputs = [];
         foreach($algorithms as $algo) {

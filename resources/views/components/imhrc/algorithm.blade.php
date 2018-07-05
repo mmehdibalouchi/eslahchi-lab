@@ -22,12 +22,12 @@
             <div class="form-group row">
                 <label for="{{str_replace(' ','%20', $params[$i])}}" class="col-sm-4 col-form-label">{{$params[$i]}}</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control parameter" name="{{$name.'-'.str_replace(' ','%20', $params[$i])}}" id="{{str_replace(' ','%20', $params[$i])}}">
+                    <input type="number" class="form-control parameter" name="{{$name.'-'.str_replace(' ','%20', $params[$i])}}" id="{{str_replace(' ','%20', $params[$i])}}" placeholder={{$defaults[$i]}}>
                 </div>
                 @if($i+1 < sizeof($params))
                     <label for="{{str_replace(' ','%20', $params[$i+1])}}" class="col-sm-4 col-form-label">{{$params[$i+1]}}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control parameter" name="{{$name.'-'.str_replace(' ','%20', $params[$i+1])}}"  id="{{str_replace(' ','%20', $params[$i+1])}}">
+                        <input type="number" class="form-control parameter" name="{{$name.'-'.str_replace(' ','%20', $params[$i+1])}}"  id="{{str_replace(' ','%20', $params[$i+1])}}" placeholder={{$defaults[$i+1]}}>
                     </div>
                 @endif
             </div>
