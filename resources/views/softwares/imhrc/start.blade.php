@@ -165,13 +165,13 @@
                     </div>
                     <div id="thresholds-params" style="display: none;">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="criteria2tsh" placeholder="Enter MMR Threshold">
+                            <input type="text" class="form-control" name="criteria2tsh" id="criteria2tsh" placeholder="Enter MMR Threshold">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="criteria3tsh" placeholder="Enter Precision, Recall, Fmeasure Threshold">
+                            <input type="text" class="form-control" name="criteria3tsh" id="criteria3tsh" placeholder="Enter Precision, Recall, Fmeasure Threshold">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="criteria4tsh" placeholder="Enter MMR Precision+, Recall+, Fmeasure+">
+                            <input type="text" class="form-control" name="criteria4tsh" id="criteria4tsh" placeholder="Enter MMR Precision+, Recall+, Fmeasure+">
                         </div>
                     </div>
                     <hr>
@@ -183,13 +183,13 @@
                     </div>
                     <div id="complexFilters-params" style="display: none;">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="complex-min" placeholder="Enter minimum number of predicted Complex">
+                            <input type="text" class="form-control" name="minComplexFileter" id="minComplexFileter" placeholder="Enter minimum number of predicted Complex">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="complex-max" placeholder="Enter maximum number of predicted Complex">
+                            <input type="text" class="form-control" name="maxComplexFilter" id="maxComplexFilter" placeholder="Enter maximum number of predicted Complex">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="complex-protein" placeholder="Enter Your lovely protein">
+                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="Enter Your lovely protein">
                         </div>
                     </div>
                     <br>

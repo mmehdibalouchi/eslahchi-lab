@@ -84,6 +84,9 @@ class IMHRCController extends Controller
         }
         system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
         var_dump('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
+        Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
+        File::makedirectory('imhrc/'.$now);
+        File::makedirectory('imhrc/'.$now.'/results');
         $algorithmsFiles = '';
         $algorithmOutputs = [];
         foreach($algorithms as $algo) {
@@ -94,10 +97,21 @@ class IMHRCController extends Controller
                 $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
                 $addArr = explode("/", $address);
                 $algorithmOutputs[$algo] = $addArr[sizeof($addArr)-2].'/'.$addArr[sizeof($addArr)-1];
+
+                var_dump($address);
+                $res = explode("\n",Storage::get($address));
+                foreach ($res as $line)
+                {
+                    $proteins = explode("\t", $line);
+                    $size = sizeof($proteins);
+                    if(!$request->has('proteinComplexFilter') ||in_array($request->proteinComplexFilter, $proteins))
+                        if(!$request->has('minComplexFileter') || $size >= intval($request->minComplexFileter))
+                            if(!$request->has('maxComplexFilter') || $size <= intval($request->maxComplexFilter))
+                                File::append('imhrc/'.$now.'/results/'.$algo.'-filter.txt', $line. PHP_EOL);
+                }
             }
 
         }
-        Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
         $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
             .' criteria='.$request->input('criterias', 'ACC').' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/softwares/imhrc/runs/'.$now.'/results/';
