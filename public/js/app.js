@@ -78,26 +78,19 @@ function imhrcResult() {
 }
 
 function dmnResult() {
+    alert()
     params   = $("#dmn").serializeArray();
     console.log(params);
-        $.each(customFilesIds, function(i, fileId) {
-            var file = $("#" + fileId)[0];
-            if(file.files.length != 0)
-                formData.append(fileId, file.files[0]);
-        });
-    $.each(criteriasIds, function(i, cri) {
-        if($("#"+ cri)[0].checked)
-            criterias.push($("#"+ cri)[0].value);
+    formData = new FormData();
+    $.each(params, function(id, value) {
+        formData.append(value["name"], value["value"]);
     });
-    formData.append("algorithms", algorithms);
-    formData.append("criterias", criterias);
-    $.each(params, function(i, val) {
-        if(val.value)
-            formData.append(val.name, val.value);
-    });
+    var file = $("#customAlgorithm")[0];
+    if(file.files.length != 0)
+        formData.append("customAlgorithm", file.files[0]);
     $.ajax({
         type:'POST',
-        url:'/api/softwares/imhrc/result',
+        url:'/api/softwares/dmn/result',
         data: formData,
         contentType: false,
         processData: false,

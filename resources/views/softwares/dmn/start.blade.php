@@ -11,42 +11,42 @@
         <div class="jumbotron msf-form" style="width: 100%">
             <form id="dmn" enctype="multipart/form-data">
                 <fieldset>
-                    <div class="row">
-                        <div class="col-sm-5">Which one do you prefer?</div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="col-sm-5">Which one do you prefer?</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-check">--}}
+                        {{--<input class="form-check-input btn-next-show" onclick="changeInputDisable('customType', 'customApproachRadio')" type="radio" name="type" id="collins2007Radio" value="normal">--}}
+                        {{--<label class="form-check-label" for="collins2007Radio">--}}
+                            {{--Use our system! :D--}}
+                        {{--</label>--}}
+                    {{--</div>--}}
                     <div class="form-check">
-                        <input class="form-check-input btn-next-show" onclick="changeInputDisable('customType', 'customApproachRadio')" type="radio" name="type" id="collins2007Radio" value="normal">
-                        <label class="form-check-label" for="collins2007Radio">
-                            Use our system! :D
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input btn-next-hide" onclick="changeInputDisable('customType', 'customApproachRadio')" type="radio" name="type" id="customApproachRadio" value="custom">
-                        <label for="customType">Upload your custom dataset</label>
-                        <input type="file" disabled="true" class="form-control-file" id="customType">
+                        <input class="form-check-input btn-next-hide" onclick="changeInputDisable('customAlgorithm', 'customApproachRadio')" type="radio" name="type" id="customApproachRadio" value="custom">
+                        <label for="customAlgorithm">Upload your algorithm output</label>
+                        <input type="file" disabled="true" class="form-control-file" id="customAlgorithm">
                     </div>
                 </fieldset>
-
+                <br>
                 <div class="show-when-checked1">
-
                     <div class="row">
                         <div class="col-sm-2"><label>Algorithms</label></div>
                     </div>
-                    <select class="js-example-basic-single col-sm-12" name="algorithm">
+                    <select class="js-example-basic-multiple col-sm-12" name="algorithms[]" multiple="multiple">
 
-                        <option value="Guimera">Guimera</option>
+                        <option value="guimera">Guimera</option>
                         <option value="Holme">Holme</option>
-                        <option value="Muller">Muller</option>
+                        <option value="muller">Muller</option>
                         <option value="Muller2">Muller2</option>
-                        <option value="Newman">Newman</option>
-                        <option value="Poolman">Poolman</option>
-                        <option value="Schuster">Schuster</option>
-                        <option value="Sridharan">Sridharan</option>
-                        <option value="Verwoerd">Verwoerd</option>
+                        <option value="newman">Newman</option>
+                        <option value="poolman">Poolman</option>
+                        <option value="schuster">Schuster</option>
+                        <option value="sridharan">Sridharan</option>
+                        <option value="verwoerd">Verwoerd</option>
                         <option value="Ding">Ding</option>
                     </select>
 
                     {{-------- DataSets --------}}
+                    <br><br>
 
                     <div class="row">
                         <div class="col-sm-2"><label>Datasets</label></div>
@@ -63,13 +63,14 @@
                         <option value="mus_imm1415">mus_imm1415</option>
                         <option value="S.cerevisiae (saccaro_ind750)">S.cerevisiae (saccaro_ind750)</option>
                     </select>
-                    <input type="file" class="form-control-file" id="customDataset">
+                    {{--<input type="file" class="form-control-file" id="customDataset">--}}
                     <br>
 
 
 
 
                     {{-------- Goldstandards --------}}
+                    <br>
                     <div class="row">
                         <div class="col-sm-2"><label>Criterias</label></div>
                     </div>
