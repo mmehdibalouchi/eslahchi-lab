@@ -13,7 +13,7 @@ class IMHRCController extends Controller
         'CFinder' => ['command' => 'CFinder', 'outputdir' => 'CFinder', 'params' => ['k-clique size(k)' => 'k', 'Lower link weight threshold(w)' => 'w', 'upper link weight threshold(W)' => 'W', 'Maximum time of clique searching(t)'=> 't']],
         'CMC' => ['command' => 'CMC', 'outputdir' => 'CMC', 'params' => ['Overlap threshold(w)' => 'w', 'Merge threshold(m)' => 'm', 'Minimum degree ratio(c)' => 'c', 'Minimum size of clusters(s)' => 's']],
         'MCL' => ['command' => 'MCL1', 'outputdir' => 'MCL', 'params' => ['Inflation(I)' => 'I']],
-        'MyClusterONE' => ['command' => 'MyClusterONE', 'outputdir' => 'MyClusterONE', 'params' => []],
+        'ClusterONE' => ['command' => 'MyClusterONE', 'outputdir' => 'MyClusterONE', 'params' => []],
         'RNSC' => ['command' => 'RNSC', 'outputdir' => 'RNSC', 'params' => ['Shuffling diversification length(d)' => 'd', 'Diversification frequency(D)' => 'D', 'Number of experiments(e)' => 'e', 'Naive stopping tolerance(n)' => 'n', 'Scaled stopping tolerance(N)' => 'N', 'Tabu length(t)' => 't', 'Tabu tolerance(T)' => 'T']],
         'RRW' => ['command' => 'RRW', 'outputdir' => 'RRW', 'params' => ['Restart probability(r)' => 'r', 'Overlap threshold(overlap)' => 'overlap', 'Early cutoff(lambda)' => 'lambda']],
         'IMHRC' => ['command' => 'XAlgorithm', 'outputdir' => 'XAlgorithm', 'params' => ['Minimum size of cluster(min-size)' => 'min-size', 'Maximum size of cluster(max-size)' => 'max-size', 'Hub retrieving threshold(black-list)(γ)' => 'black-list(γ)', 'Hub removing threshold (black-list)(β)' => 'black-list(β)', 'Overlap threshold(max-overlap)' => 'max-overlap', 'Growing penalty(growth-penalty)' => 'growth-penalty', 'Hub retrieving penalty(back-penalty)' => 'back-penalty', 'Minimum Density(min-density)' => 'min-density']]
@@ -82,7 +82,7 @@ class IMHRCController extends Controller
                 Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
             }
         }
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
+        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt >> log.txt 2>&1', $javaCommandResult);
         var_dump('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
         Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
         File::makedirectory('imhrc/'.$now);
@@ -99,15 +99,16 @@ class IMHRCController extends Controller
                 $algorithmOutputs[$algo] = $addArr[sizeof($addArr)-2].'/'.$addArr[sizeof($addArr)-1];
 
                 var_dump($address);
-                $res = explode("\n",Storage::get($address));
-                foreach ($res as $line)
-                {
-                    $proteins = explode("\t", $line);
-                    $size = sizeof($proteins);
-                    if(!$request->has('proteinComplexFilter') ||in_array($request->proteinComplexFilter, $proteins))
-                        if(!$request->has('minComplexFileter') || $size >= intval($request->minComplexFileter))
-                            if(!$request->has('maxComplexFilter') || $size <= intval($request->maxComplexFilter))
-                                File::append('imhrc/'.$now.'/results/'.$algo.'-filter.txt', $line. PHP_EOL);
+                if($request->has('complexFilters') && $request->complexFilters) {
+                    $res = explode("\n", Storage::get($address));
+                    foreach ($res as $line) {
+                        $proteins = explode("\t", $line);
+                        $size = sizeof($proteins);
+                        if (!$request->has('proteinComplexFilter') || in_array($request->proteinComplexFilter, $proteins))
+                            if (!$request->has('minComplexFileter') || $size >= intval($request->minComplexFileter))
+                                if (!$request->has('maxComplexFilter') || $size <= intval($request->maxComplexFilter))
+                                    File::append('imhrc/' . $now . '/results/' . $algo . '-filter.txt', $line . PHP_EOL);
+                    }
                 }
             }
 
@@ -129,7 +130,7 @@ class IMHRCController extends Controller
             var_dump("table", $t);
             $criterias[] = ["value" => $cri, "name" => $this->criterias[$cri], "table" => $t];
         }
-        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/']);
+        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/', 'hasFilter' => $request->complexFilters? true: false]);
 //        return system();
 //        return $res;
         return redirect('softwares/imhrc/results');
