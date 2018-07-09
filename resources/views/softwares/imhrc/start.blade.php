@@ -18,25 +18,25 @@
                         <div class="col-sm-2">Datasets</div>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio')" type="radio" name="dataset" id="collins2007Radio" value="collins2007" checked>
+                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio'); changeAlgorithmParametersDefaults()" type="radio" name="dataset" id="collins2007Radio" value="collins2007" checked>
                         <label class="form-check-label" for="collins2007Radio">
                             collins2007
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio')" type="radio" name="dataset" id="gavin2006_socioaffinities_rescaledRadio" value="gavin2006_socioaffinities_rescaled">
+                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio'); changeAlgorithmParametersDefaults()" type="radio" name="dataset" id="gavin2006_socioaffinities_rescaledRadio" value="gavin2006_socioaffinities_rescaled">
                         <label class="form-check-label" for="gavin2006_socioaffinities_rescaledRadio">
                             gavin2006_socioaffinities_rescaled
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio')" type="radio" name="dataset" id="krogan2006_coreRadio" value="krogan2006_core">
+                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio'); changeAlgorithmParametersDefaults()" type="radio" name="dataset" id="krogan2006_coreRadio" value="krogan2006_core">
                         <label class="form-check-label" for="krogan2006_coreRadio">
                             krogan2006_core
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio')" type="radio" name="dataset" id="krogan2006_extendedRadio" value="krogan2006_extended">
+                        <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio'); changeAlgorithmParametersDefaults()" type="radio" name="dataset" id="krogan2006_extendedRadio" value="krogan2006_extended">
                         <label class="form-check-label" for="krogan2006_extendedRadio">
                             krogan2006_extended
                         </label>
@@ -60,13 +60,13 @@
                         <div class="col-sm-2">Gold Standards</div>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="changeInputDisable('customGoldstandard', 'customGoldstandardRadio')" type="radio" name="goldstandard" id="mips_3_100Radio" value="mips_3_100" checked>
+                        <input class="form-check-input" onclick="changeInputDisable('customGoldstandard', 'customGoldstandardRadio'); changeAlgorithmParametersDefaults()" type="radio" name="goldstandard" id="mips_3_100Radio" value="mips_3_100" checked>
                         <label class="form-check-label" for="mips_3_100Radio">
                             mips_3_100
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="changeInputDisable('customGoldstandard', 'customGoldstandardRadio')" type="radio" name="goldstandard" id="sgdRadio" value="sgd">
+                        <input class="form-check-input" onclick="changeInputDisable('customGoldstandard', 'customGoldstandardRadio'); changeAlgorithmParametersDefaults()" type="radio" name="goldstandard" id="sgdRadio" value="sgd">
                         <label class="form-check-label" for="sgdRadio">
                             sgd
                         </label>
