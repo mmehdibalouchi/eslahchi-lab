@@ -21,7 +21,7 @@
                         {{--</label>--}}
                     {{--</div>--}}
                     <div class="form-check">
-                        <input class="form-check-input btn-next-hide" onclick="changeInputDisable('customAlgorithm', 'customApproachRadio')" type="radio" name="type" id="customApproachRadio" value="custom">
+                        <input class="form-check-input btn-next-hide" onclick="changeInputDisable('customAlgorithm', 'customApproachRadio')" type="checkbox" name="type" id="customApproachRadio" value="custom">
                         <label for="customAlgorithm">Upload your algorithm output</label>
                         <input type="file" disabled="true" class="form-control-file" id="customAlgorithm">
                     </div>

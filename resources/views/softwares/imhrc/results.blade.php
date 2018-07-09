@@ -85,11 +85,13 @@
                                                     <td scope="col"><a href={{"/".$path.$address}} download>{{$algo}}</a></td>
                                                 </tr>
                                             @endforeach
-                                            @foreach($algorithmOutputs as $algo => $address)
-                                                <tr>
-                                                    <td scope="col"><a href={{"/".$path.''.$algo.'-filter.txt'}} download>{{$algo."-Filtered"}}</a></td>
-                                                </tr>
-                                            @endforeach
+                                            @if($hasFilter == true)
+                                                @foreach($algorithmOutputs as $algo => $address)
+                                                    <tr>
+                                                        <td scope="col"><a href={{"/".$path.''.$algo.'-filter.txt'}} download>{{$algo."-Filtered"}}</a></td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                     </tbody>
                                 </table>
                             </div>
