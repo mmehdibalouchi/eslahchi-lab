@@ -25,10 +25,26 @@ function changeInputDisable(inputId, checkElementId) {
     else
         tr.disabled = true;
 }
+changeAlgorithmParametersDefaults();
+function changeAlgorithmParametersDefaults(dataset) {
+    var defaults = {
+        'AP' :['0.6'],
+        'CFinder' :['4', '0.0', '1', '0.2'],
+        'CMC' :['0.7', '0.5', '0', '3'],
+        'MCL' :['4.7'],
+        'ClusterONE' :['9', '10', '3', '20', '15', '100', '1'],
+        'RRW' :['0.6', '0.1', '0.6'],
+        'IMHRC' :['3', '1000', '0.014', '0.048', '0.78', '1', '1', '0.2']
+    };
+    jQuery.each(defaults, function(i, val) {
+        console.log(i, val);
+    });
+
+}
 
 function imhrcResult() {
     var files;
-    var algorithmNames = ['AP', 'CFinder', 'CMC', 'MCL', 'MyClusterONE', 'RNSC', 'RRW', 'IMHRC', 'custom'];
+    var algorithmNames = ['AP', 'CFinder', 'CMC', 'MCL', 'ClusterONE', 'RNSC', 'RRW', 'IMHRC', 'custom'];
     var criteriasIds = ["criteria1", "criteria2", "criteria3", "criteria4", "criteria5"];
     var customFilesIds = ['customAlgorithm', 'customDataset', 'customGoldstandard'];
     formData = new FormData(),
@@ -61,7 +77,7 @@ function imhrcResult() {
         processData: false,
         beforeSend: function()
         {
-            $(".container")[1].innerHTML = "loading...";
+            $(".container")[1].innerHTML = "<center><img src='https://loading.io/spinners/dna/lg.dna-spin-spiral-preloader.gif'></center>";
         },
         success:function(data){
             var elements =  $.parseHTML(data);
@@ -96,7 +112,7 @@ function dmnResult() {
         processData: false,
         beforeSend: function()
         {
-            $(".container")[1].innerHTML = "loading...";
+            $(".container")[1].innerHTML = "<center><img src='https://loading.io/spinners/dna/lg.dna-spin-spiral-preloader.gif'></center>";
         },
         success:function(data){
             var elements =  $.parseHTML(data);
