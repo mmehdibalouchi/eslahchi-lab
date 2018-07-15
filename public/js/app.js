@@ -97,7 +97,7 @@ function imhrcResult() {
         processData: false,
         beforeSend: function()
         {
-            $(".container")[1].innerHTML = "<center><img src='https://loading.io/spinners/dna/lg.dna-spin-spiral-preloader.gif'></center>";
+            $(".container")[1].innerHTML = "<center><img src='/images/gifs/loading.gif'></center>";
         },
         success:function(data){
             var elements =  $.parseHTML(data);
@@ -132,7 +132,7 @@ function dmnResult() {
         processData: false,
         beforeSend: function()
         {
-            $(".container")[1].innerHTML = "<center><img src='https://loading.io/spinners/dna/lg.dna-spin-spiral-preloader.gif'></center>";
+            $(".container")[1].innerHTML = "<center><img src='/images/gifs/loading.gif'></center>";
         },
         success:function(data){
             var elements =  $.parseHTML(data);
