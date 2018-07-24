@@ -6,11 +6,13 @@
                 <br>
                 <nav>
                     <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-result-tab" data-toggle="tab" href="#nav-result" role="tab" aria-controls="nav-home" aria-selected="true">Result</a>
+                        <a class="nav-item nav-link active" id="nav-result-tab" data-toggle="tab" href="#nav-result" role="tab" aria-controls="nav-result" aria-selected="true">Result</a>
+                        <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="true">Download</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane text-center fade show active" id="nav-result-tab" role="tabpanel" aria-labelledby="nav-result-tab">
+
+                    <div class="tab-pane text-center fade show active" id="nav-result" role="tabpanel" aria-labelledby="nav-result-tab">
                         <br><br>
                         <table class="table">
                             <thead class="thead-dark">
@@ -34,6 +36,20 @@
                         </table>
                         <br>
                     </div>
+
+                    <div class="tab-pane text-center fade" id="nav-download" role="tabpanel" aria-labelledby="nav-download-tab">
+                        <br><br>
+                        <table class="table">
+                            <tbody>
+                            @foreach($resultFiles as $file)
+                                <tr>
+                                    <td scope="col"><a href={{$file["path"]}} download>{{$file["name"]}}</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>

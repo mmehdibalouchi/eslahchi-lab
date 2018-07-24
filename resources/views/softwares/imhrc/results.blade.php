@@ -34,6 +34,9 @@
                                             <tbody>
                                             @for($k=1; $k < sizeof($criterias[$i]["table"]) - 1; $k++)
                                                 <tr>
+                                                    @if($criterias[$i]["value"]=="MMR" || $criterias[$i]["value"]=="AUMF")
+                                                        <td>{{$criterias[$i]["value"]}}</td>
+                                                    @endif
                                                     @for($j = 0; $j < sizeof($criterias[$i]["table"][$k]); $j++)
                                                         <td>{{$criterias[$i]["table"][$k][$j]}}</td>
                                                     @endfor
@@ -42,8 +45,14 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        @if($criterias[$i]["value"] != "ACC" && $criterias[$i]["value"] != "AUMF")
-                                            <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
+                                        @if($hasTsh == false && ($criterias[$i]["value"] != "ACC" && $criterias[$i]["value"] != "AUMF"))
+                                            @if($criterias[$i]["value"] == "MMR")
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
+                                            @else
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot1.png'}}"><hr>
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot2.png'}}"><hr>
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot3.png'}}">
+                                            @endif
                                         @endif
 
                                     </div>
@@ -62,6 +71,9 @@
                                             <tbody>
                                             @for($k=1; $k < sizeof($criterias[$i]["table"]) - 1; $k++)
                                                 <tr>
+                                                    @if($criterias[$i]["value"]=="MMR" || $criterias[$i]["value"]=="AUMF")
+                                                        <td>{{$criterias[$i]["value"]}}</td>
+                                                    @endif
                                                     @for($j = 0; $j < sizeof($criterias[$i]["table"][$k]); $j++)
                                                         <td>{{$criterias[$i]["table"][$k][$j]}}</td>
                                                     @endfor
@@ -70,8 +82,14 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        @if($criterias[$i]["value"] != "ACC" && $criterias[$i]["value"] != "AUMF")
-                                            <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
+                                        @if($hasTsh == false && ($criterias[$i]["value"] != "ACC" && $criterias[$i]["value"] != "AUMF"))
+                                            @if($criterias[$i]["value"] == "MMR")
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot.png'}}">
+                                            @else
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot1.png'}}"><hr>
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot2.png'}}"><hr>
+                                                <img class="img-thumbnail" src="/{{$path.$criterias[$i]["value"].'_plot3.png'}}">
+                                            @endif
                                         @endif
                                     </div>
                             @endif

@@ -1,5 +1,3 @@
-$.backstretch("/images/banners/0.jpg");
-changeAlgorithmParametersDefaults();
 $(document).ready(function() {
     $('.js-example-basic-single').select2();
 });
@@ -15,7 +13,6 @@ function showParams(checkBoxId) {
         tr.style.display = "none";
     }
 }
-
 function changeInputDisable(inputId, checkElementId) {
     var tr = document.getElementById(inputId);
     var checkElement = document.getElementById(checkElementId)
@@ -114,7 +111,6 @@ function imhrcResult() {
 }
 
 function dmnResult() {
-    alert()
     params   = $("#dmn").serializeArray();
     console.log(params);
     formData = new FormData();

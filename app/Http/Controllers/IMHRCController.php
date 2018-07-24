@@ -116,9 +116,11 @@ class IMHRCController extends Controller
         $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
             .' criteria='.$request->input('criterias', 'ACC').' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/softwares/imhrc/runs/'.$now.'/results/';
+        if($request->has("criteriatsh"))
+            $pythonCommand = $pythonCommand.' threshold='.$request->criteriatsh;
         var_dump($pythonCommand);
-        system($pythonCommand, $res);
-        sleep(1);
+        system($pythonCommand. ' >> ../runs/'.$now.'/log.txt 2>&1', $res);
+        sleep(3);
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/results', 'imhrc/'.$now.'/results');
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', 'imhrc/'.$now.'/results');
         var_dump($res);
@@ -127,10 +129,10 @@ class IMHRCController extends Controller
             $t = explode("\n", File::get('imhrc/' . $now . '/results/' . $cri . '_table.txt'));
             for ($i =0 ; $i<sizeof($t); $i++)
                 $t[$i] = explode(",", $t[$i]);
-            var_dump("table", $t);
+//            var_dump("table", $t);
             $criterias[] = ["value" => $cri, "name" => $this->criterias[$cri], "table" => $t];
         }
-        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/', 'hasFilter' => $request->complexFilters? true: false]);
+        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/', 'hasFilter' => $request->complexFilters? true: false, 'hasTsh' => $request->criteriatsh? true: false]);
 //        return system();
 //        return $res;
         return redirect('softwares/imhrc/results');

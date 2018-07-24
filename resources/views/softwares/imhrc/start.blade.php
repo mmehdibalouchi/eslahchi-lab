@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            Upload the esult of your algorithm
+                            Upload the result of your algorithm
                         </div>
                         <div class="col-sm-9">
                             <div class="form-group">
@@ -167,13 +167,7 @@
                     </div>
                     <div id="thresholds-params" style="display: none;">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="criteria2tsh" id="criteria2tsh" placeholder="Enter MMR Threshold">
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="criteria3tsh" id="criteria3tsh" placeholder="Enter Precision, Recall, Fmeasure Threshold">
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="criteria4tsh" id="criteria4tsh" placeholder="Enter MMR Precision+, Recall+, Fmeasure+">
+                            <input type="text" class="form-control" name="criteriatsh" id="criteriatsh" placeholder="Enter Criteria Threshold">
                         </div>
                     </div>
                     <hr>
