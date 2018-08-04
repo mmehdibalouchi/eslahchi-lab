@@ -1,17 +1,31 @@
 $(document).ready(function() {
     $('.js-example-basic-single').select2();
 });
-function showParams(checkBoxId) {
+function showParams(checkBoxId, cssShowType) {
     var checkBox = document.getElementById(checkBoxId);
     // Get the output text
     var tr = document.getElementById(checkBoxId+"-params");
 
     // If the checkbox is checked, display the output text
     if (checkBox.checked == true){
-        tr.style.display = "flex";
+        if(cssShowType == "flex")
+            tr.style.display = "flex";
+        else
+            tr.style.display = "block";
     } else {
         tr.style.display = "none";
     }
+}
+
+function showDiv(showCheckBoxId, hideCheckBoxId) {
+    var showCheckBox = document.getElementById(showCheckBoxId);
+    var hideCheckBox = document.getElementById(hideCheckBoxId);
+    // Get the output text
+    var showDiv = document.getElementById(showCheckBoxId+"-params");
+    var hideDiv = document.getElementById(hideCheckBoxId+"-params");
+
+    showDiv.style.display = "block";
+    hideDiv.style.display = "none";
 }
 function changeInputDisable(inputId, checkElementId) {
     var tr = document.getElementById(inputId);

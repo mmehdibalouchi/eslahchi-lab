@@ -7,7 +7,10 @@
                 <nav>
                     <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-result-tab" data-toggle="tab" href="#nav-result" role="tab" aria-controls="nav-result" aria-selected="true">Result</a>
-                        <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="true">Download</a>
+                        @if($filter)
+                            <a class="nav-item nav-link" id="nav-filters-tab" data-toggle="tab" href="#nav-filters" role="tab" aria-controls="nav-filters" aria-selected="true">Filters Table</a>
+                        @endif
+                        <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="true">Graphic Scheme of modules</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -34,8 +37,31 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <br>
+
                     </div>
+                    @if($filter)
+                        <div class="tab-pane text-center fade" id="nav-filters" role="tabpanel" aria-labelledby="nav-filters-tab">
+                            <br><br>
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        @foreach($filter[0] as $algo)
+                                            <th scope="col">{{$algo}}</th>
+                                        @endforeach
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for($k=1; $k < sizeof($filter); $k++)
+                                        <tr>
+                                            @for($j = 0; $j < sizeof($filter[$k]); $j++)
+                                                <td>{{$filter[$k][$j]}}</td>
+                                            @endfor
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                        </div>
+                    @endif
 
                     <div class="tab-pane text-center fade" id="nav-download" role="tabpanel" aria-labelledby="nav-download-tab">
                         <br><br>
@@ -43,7 +69,7 @@
                             <tbody>
                             @foreach($resultFiles as $file)
                                 <tr>
-                                    <td scope="col"><a href={{$file["path"]}} download>{{$file["name"]}}</a></td>
+                                    <td scope="col"><a href={{$file["path"]}} Graphical Representation>{{$file["name"]}}</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

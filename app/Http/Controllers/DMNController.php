@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class DMNController extends Controller
@@ -63,6 +64,31 @@ class DMNController extends Controller
                     $resultTable[$resultMehotd][$cri] = "-";
         }
 //        dd($resultFiles);
-        return view('softwares.dmn.results', ['resultTable' => $resultTable, 'resultFiles' => $resultFiles, 'criterias' => $request->criterias]);
+        $filter = false;
+        if($request->has("hasFilter") && $request->hasFilter == "true")
+        {
+            if($request->has("filterOption"))
+            {
+                if($request->filterOption == "metabolites") {
+                    $commandMethods = "\"" . implode("\",\"", $request->metabolitesMethods) . "\"";
+                    $first = $request->firstMetabolites;
+                    $second = $request->secondMetabolites;
+                }
+                else {
+                    $commandMethods = "\"" . implode("\",\"", $request->reactionsMethods) . "\"";
+                    $first = $request->firstReactions;
+                    $second = $request->secondReactions;
+                }
+
+                system("cd ../storage/app/softwares/dmn/source/gephi && python -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
+                var_dump("filter", "cd ../storage/app/softwares/dmn/source/gephi && python -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
+                $t = explode("\n", File::get('storage/dmn/runs/' . $now . '/filter.txt'));
+                for ($i =0 ; $i<sizeof($t); $i++)
+                    $t[$i] = explode(",", $t[$i]);
+                $filter = $t;
+            }
+
+        }
+        return view('softwares.dmn.results', ['resultTable' => $resultTable, 'resultFiles' => $resultFiles, 'criterias' => $request->criterias, 'filter' => $filter]);
     }
 }

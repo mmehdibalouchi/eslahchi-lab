@@ -11,12 +11,12 @@
             <form id="dmn" enctype="multipart/form-data">
                   <div class="form-group">
                         <input onclick="changeInputDisable('customAlgorithm', 'customApproachRadio')" type="checkbox" name="type" id="customApproachRadio" value="custom">
-                        <label for="customAlgorithm">Upload your algorithm output</label>
+                        <label for="customAlgorithm">Upload your result</label>
                         <input type="file" disabled="true" class="form-control-file" id="customAlgorithm">
                     </div>
                     {{-------- Algorithms --------}}
                     <div class="form-group">
-                        <label>Algorithms</label>
+                        <label>Methods</label>
                         <select class="js-example-basic-multiple col-sm-12" name="algorithms[]" multiple="multiple">
                             <option value="guimera">Guimera</option>
                             <option value="holme">Holme</option>
@@ -53,7 +53,7 @@
                     {{-------- Criterias --------}}
                     <br>
                     <div class="form-group">
-                        <label>Criterias</label>
+                        <label>Criteria</label>
                         <select class="js-example-basic-multiple col-sm-12" name="criterias[]" multiple="multiple">
                             <option value="cohesion_coupling">cohesion_coupling</option>
                             <option value="efficacy">efficacy</option>
@@ -73,7 +73,85 @@
 
                 {{-------- Filters --------}}
 
+                <div class="form-group">
+                    <input onclick="showParams('filters')" type="checkbox" name="hasFilter" id="filters" value=true>
+                    <label>Considering to metabolites or reactions</label><br>
+                    <div style="display: none" id="filters-params">
+                        <div class="form-check form-check-inline">
+                            <input onclick="showDiv('metabolites', 'reactions')" class="form-check-input" type="radio" name="filterOption" id="metabolites" value="metabolites">
+                            <label class="form-check-label" for="metabolites">Metabolites</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input onclick="showDiv('reactions', 'metabolites')" class="form-check-input" type="radio" name="filterOption" id="reactions" value="reactions">
+                            <label class="form-check-label" for="reactions">Reactions</label>
+                        </div>
+                        <br>
+                        <div style="display: none;" id="metabolites-params">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="mullerCheckbox1" value="muller">
+                                <label class="form-check-label" for="mullerCheckbox1">Muller</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="muller2_newCheckbox2" value="muller2_new">
+                                <label class="form-check-label" for="muller2_newCheckbox2">Muller2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="poolmanCheckbox2" value="poolman">
+                                <label class="form-check-label" for="poolmanCheckbox2">Poolman</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="sridharanCheckbox2" value="sridharan">
+                                <label class="form-check-label" for="sridharanCheckbox2">Sridharan</label>
+                            </div>
+                            <br><br>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="firstMetabolites" placeholder="Enter the first metabolite">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="secondMetabolites" placeholder="Enter the second metabolite">
+                                </div>
+                            </div>
+                        </div>
 
+                        <div style="display: none;" id="reactions-params">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="holmeCheckbox1" value="holme">
+                                <label class="form-check-label" for="holmeCheckbox1">Holme</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="guimeraCheckbox2" value="guimera">
+                                <label class="form-check-label" for="guimeraCheckbox2">Guimera</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="DingCheckbox2" value="Ding">
+                                <label class="form-check-label" for="DingCheckbox2">Ding</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="verwoerdCheckbox2" value="verwoerd">
+                                <label class="form-check-label" for="verwoerdCheckbox2">Verwoerd</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="schusterCheckbox2" value="schuster">
+                                <label class="form-check-label" for="schusterCheckbox2">Schuster</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="newmanCheckbox2" value="newman">
+                                <label class="form-check-label" for="newmanCheckbox2">Newman</label>
+                            </div>
+                            <br><br>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="firstReactions" placeholder="Enter the first reaction">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="secondReactions" placeholder="Enter the first reaction">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <br>
                 <div class="text-center">
