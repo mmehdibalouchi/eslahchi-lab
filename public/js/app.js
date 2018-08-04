@@ -44,7 +44,7 @@ function changeAlgorithmParametersDefaults() {
     var inputNames = {
         'AP': ['Preference(P)'],
         'CFinder': ['k-clique size(k)', 'Lower link weight threshold(w)', 'upper link weight threshold(W)', 'Maximum time of clique searching(t)'],
-        'CMC': ['Overlap threshold(w)', 'Merge threshold(m)', 'Minimum degree ratio(c)', 'Minimum size of clusters(s)'],
+        // 'CMC': ['Overlap threshold(w)', 'Merge threshold(m)', 'Minimum degree ratio(c)', 'Minimum size of clusters(s)'],
         'MCL': ['Inflation(I)'],
         'RNSC': ['Shuffling diversification length(d)', 'Diversification frequency(D)', 'Number of experiments(e)', 'Naive stopping tolerance(n)', 'Scaled stopping tolerance(N)', 'Tabu length(t)', 'Tabu tolerance(T)'],
         'RRW': ['Restart probability(r)', 'Overlap threshold(overlap)', 'Early cutoff(lambda)'],
@@ -52,16 +52,16 @@ function changeAlgorithmParametersDefaults() {
     };
     var defaults = {
         'mips_3_100': {
-            'collins2007': [-0.9 , 3, 0.0, 1, 0.2, 0.7, 0.5, 1, 3, 4.9, 5, 50, 3 , 10, 5, 100, 1, 0.5, 0.2, 0.5, 3, 10000, 0.002, 0.005, 0.5, 1.2, 1.0, 0.5],
-            'gavin2006_socioaffinities_rescaled': [-0.15 , 4, 0, 1, 0.2, 0.7, 0.5, 1, 3, 3.2, 9, 20, 3 , 20, 5, 100, 5, 0.6, 0.1, 0.6, 3, 10000, 0.005, 0.007, 0.8, 2.2, 1.4, 0.4],
-            'krogan2006_core': [0.35 , 3, 0, 1, 0.2, 0.7, 0.4, 1, 3, 2.3, 9, 20, 3 , 10, 5, 10, 3, 0.5, 0.2, 0.6, 3, 10000, 0.005, 0.005, 0.85, 1.2, 3.0, 0.4],
-            'krogan2006_extended': [0.4 , 3, 0, 1, 0.2, 0.7, 0.5, 1, 3, 2.3, 9, 20, 3 , 20, 1, 50, 1, 0.5, 0.2, 0.7, 3, 10000, 0.0, 0.001, 0.8, 2.4, 1.0, 0.6],
+            'collins2007': [-0.9 , 3, 0.0, 1, 0.2, 4.9, 5, 50, 3 , 10, 5, 100, 1, 0.5, 0.2, 0.5, 3, 10000, 0.002, 0.005, 0.5, 1.2, 1.0, 0.5],
+            'gavin2006_socioaffinities_rescaled': [-0.15 , 4, 0, 1, 0.2, 3.2, 9, 20, 3 , 20, 5, 100, 5, 0.6, 0.1, 0.6, 3, 10000, 0.005, 0.007, 0.8, 2.2, 1.4, 0.4],
+            'krogan2006_core': [0.35 , 3, 0, 1, 0.2, 2.3, 9, 20, 3 , 10, 5, 10, 3, 0.5, 0.2, 0.6, 3, 10000, 0.005, 0.005, 0.85, 1.2, 3.0, 0.4],
+            'krogan2006_extended': [0.4 , 3, 0, 1, 0.2, 2.3, 9, 20, 3 , 20, 1, 50, 1, 0.5, 0.2, 0.7, 3, 10000, 0.0, 0.001, 0.8, 2.4, 1.0, 0.6],
         },
         'sgd':{
-            'collins2007': [0.4, 3, 0.0, 1, 0.2, 0.7, 0.5, 1, 3, 4.6, 9, 50, 3 , 50, 5, 100, 1, 0.5, 0.2, 0.5, 3, 10000, 0.036, 0.098, 0.59, 2.8, 1.0, 0.3],
-            'gavin2006_socioaffinities_rescaled': [-0.6, 4, 0, 1, 0.2, 0.7, 0.5, 1, 3, 4.6, 9, 10, 3 , 20, 15, 100, 1, 0.6, 0.1, 0.6, 3, 10000, 0.018, 0.046, 0.8, 1.4, 2.0, 0.4],
-            'krogan2006_core': [0.35, 3, 0, 1, 0.2, 0.7, 0.4, 1, 3, 4.6, 3, 20, 3 , 50, 5, 50, 1, 0.5, 0.2, 0.6, 3, 10000, 0.0, 0.001, 0.79, 1.5, 1.8, 0.5],
-            'krogan2006_extended': [0.3, 4, 0, 1, 0.2, 0.7, 0.3, 1, 3, 4.6, 9, 50, 10 , 50, 1, 50, 1, 0.5, 0.2, 0.7, 3, 10000, 0.007, 0.012, 0.79, 1.6, 3.0, 0.6],
+            'collins2007': [0.4, 3, 0.0, 1, 0.2, 4.6, 9, 50, 3 , 50, 5, 100, 1, 0.5, 0.2, 0.5, 3, 10000, 0.036, 0.098, 0.59, 2.8, 1.0, 0.3],
+            'gavin2006_socioaffinities_rescaled': [-0.6, 4, 0, 1, 0.2, 4.6, 9, 10, 3 , 20, 15, 100, 1, 0.6, 0.1, 0.6, 3, 10000, 0.018, 0.046, 0.8, 1.4, 2.0, 0.4],
+            'krogan2006_core': [0.35, 3, 0, 1, 0.2, 4.6, 3, 20, 3 , 50, 5, 50, 1, 0.5, 0.2, 0.6, 3, 10000, 0.0, 0.001, 0.79, 1.5, 1.8, 0.5],
+            'krogan2006_extended': [0.3, 4, 0, 1, 0.2, 4.6, 9, 50, 10 , 50, 1, 50, 1, 0.5, 0.2, 0.7, 3, 10000, 0.007, 0.012, 0.79, 1.6, 3.0, 0.6],
         }
     };
     var index = 0;
@@ -75,7 +75,8 @@ function changeAlgorithmParametersDefaults() {
 
 function imhrcResult() {
     var files;
-    var algorithmNames = ['AP', 'CFinder', 'CMC', 'MCL', 'ClusterONE', 'RNSC', 'RRW', 'IMHRC', 'custom'];
+    // var algorithmNames = ['AP', 'CFinder', 'CMC', 'MCL', 'ClusterONE', 'RNSC', 'RRW', 'IMHRC', 'custom'];
+    var algorithmNames = ['AP', 'CFinder', 'MCL', 'ClusterONE', 'RNSC', 'RRW', 'IMHRC', 'custom'];
     var criteriasIds = ["criteria1", "criteria2", "criteria3", "criteria4", "criteria5"];
     var customFilesIds = ['customAlgorithm', 'customDataset', 'customGoldstandard'];
     formData = new FormData(),
