@@ -1,0 +1,28 @@
+AP assets/sourcesofdata/datasets/collins2007.txt -p 0.4
+AP assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt -p -0.6
+AP assets/sourcesofdata/datasets/krogan2006_core.txt -p 0.35
+AP assets/sourcesofdata/datasets/krogan2006_extended.txt -p 0.3
+CFinder assets/sourcesofdata/datasets/collins2007.txt -w 0.0 -W 1.0 -k 3 -t 0.2
+CFinder assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt -w 0.0 -W 1.0 -k 4 -t 0.2
+CFinder assets/sourcesofdata/datasets/krogan2006_core.txt -w 0.0 -W 1.0 -k 3 -t 0.2
+CFinder assets/sourcesofdata/datasets/krogan2006_extended.txt -w 0.0 -W 1.0 -k 4 -t 0.2
+CMC assets/sourcesofdata/datasets/collins2007.txt -c 1 -s 3 -w 0.7 -m 0.5
+CMC assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt -c 1 -s 3 -w 0.7 -m 0.5
+CMC assets/sourcesofdata/datasets/krogan2006_core.txt -c 1 -s 3 -w 0.7 -m 0.4
+CMC assets/sourcesofdata/datasets/krogan2006_extended.txt -c 1 -s 3 -w 0.7 -m 0.3
+MCL1 assets/sourcesofdata/datasets/collins2007.txt -I 4.6
+MCL1 assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt -I 4.7
+MCL1 assets/sourcesofdata/datasets/krogan2006_core.txt -I 2.0
+MCL1 assets/sourcesofdata/datasets/krogan2006_extended.txt -I 2.6
+MyClusterONE assets/sourcesofdata/datasets/collins2007.txt
+MyClusterONE assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt
+MyClusterONE assets/sourcesofdata/datasets/krogan2006_core.txt
+MyClusterONE assets/sourcesofdata/datasets/krogan2006_extended.txt
+RNSC assets/sourcesofdata/datasets/collins2007.txt -t 100 -T 1 -n 50 -N 5 -e 3 -D 50 -d 9
+RNSC assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt -t 100 -T 1 -n 20 -N 15 -e 3 -D 10 -d 9
+RNSC assets/sourcesofdata/datasets/krogan2006_core.txt -t 50 -T 1 -n 50 -N 5 -e 3 -D 20 -d 3
+RNSC assets/sourcesofdata/datasets/krogan2006_extended.txt -t 50 -T 1 -n 50 -N 1 -e 10 -D 50 -d 9
+RRW assets/sourcesofdata/datasets/collins2007.txt -r 0.5 -overlap 0.2 -lambda 0.5
+RRW assets/sourcesofdata/datasets/gavin2006_socioaffinities_rescaled.txt -r 0.6 -overlap 0.1 -lambda 0.6
+RRW assets/sourcesofdata/datasets/krogan2006_core.txt -r 0.5 -overlap 0.2 -lambda 0.6
+RRW assets/sourcesofdata/datasets/krogan2006_extended.txt -r 0.5 -overlap 0.2 -lambda 0.7
