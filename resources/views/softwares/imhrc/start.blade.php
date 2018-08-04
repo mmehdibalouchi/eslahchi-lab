@@ -8,8 +8,7 @@
 
 @section('content')
     @include('components.imhrc.breadcrumbs', ['activeSpan' => 1])
-    <div class="row">
-        <div class="jumbotron msf-form" style="width: 100%">
+        <div class="shadow p-3 mb-5 msf-form rounded bg-light">
             <br>
             <form id="form" enctype="multipart/form-data">
                 {{-------- DataSets --------}}
@@ -94,7 +93,7 @@
                     <hr>
                     @include('components.imhrc.algorithm', ['name' => 'AP', 'params' => ['Preference(P)'], 'defaults' => ['0.6']])
                     @include('components.imhrc.algorithm', ['name' => 'CFinder', 'params' => ['k-clique size(k)', 'Lower link weight threshold(w)', 'upper link weight threshold(W)', 'Maximum time of clique searching(t)'], 'defaults' => ['4', '0.0', '1', '0.2']])
-                    @include('components.imhrc.algorithm', ['name' => 'CMC', 'params' => ['Overlap threshold(w)', 'Merge threshold(m)', 'Minimum degree ratio(c)', 'Minimum size of clusters(s)'], 'defaults' => ['0.7', '0.5', '0', '3']])
+                    {{--@include('components.imhrc.algorithm', ['name' => 'CMC', 'params' => ['Overlap threshold(w)', 'Merge threshold(m)', 'Minimum degree ratio(c)', 'Minimum size of clusters(s)'], 'defaults' => ['0.7', '0.5', '0', '3']])--}}
                     @include('components.imhrc.algorithm', ['name' => 'MCL', 'params' => ['Inflation(I)'], 'defaults' => ['4.7']])
                     @include('components.imhrc.algorithm', ['name' => 'ClusterONE', 'params' => [], 'defaults' => []])
                     @include('components.imhrc.algorithm', ['name' => 'RNSC', 'params' => ['Shuffling diversification length(d)', 'Diversification frequency(D)', 'Number of experiments(e)', 'Naive stopping tolerance(n)', 'Scaled stopping tolerance(N)', 'Tabu length(t)', 'Tabu tolerance(T)'], 'defaults' => ['9', '10', '3', '20', '15', '100', '1']])
@@ -160,7 +159,7 @@
                     </div>
                     <hr>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="showParams('thresholds')" type="checkbox" id="thresholds">
+                        <input class="form-check-input" onclick="showParams('thresholds', 'flex')" type="checkbox" id="thresholds">
                         <label class="form-check-label" for="thresholds">
                             For Specific Thresholds
                         </label>
@@ -172,7 +171,7 @@
                     </div>
                     <hr>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="showParams('complexFilters')" type="checkbox" name="complexFilters" id="complexFilters" value=true>
+                        <input class="form-check-input" onclick="showParams('complexFilters', 'flex')" type="checkbox" name="complexFilters" id="complexFilters" value=true>
                         <label class="form-check-label" for="complexFilters">
                             Enter Complex Filters
                         </label>
@@ -185,7 +184,7 @@
                             <input type="text" class="form-control" name="maxComplexFilter" id="maxComplexFilter" placeholder="Enter maximum number of predicted Complex">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="Enter Your lovely protein">
+                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="Enter Your protein">
                         </div>
                     </div>
                     <br>
@@ -200,6 +199,4 @@
                 {{--<button type="submit">submit</button>--}}
             </form>
         </div>
-    </div>
-    </div>
 @endsection

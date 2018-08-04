@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/imhrc
+/public/imhrc/*
 /storage/*.key
 /vendor
 /.idea

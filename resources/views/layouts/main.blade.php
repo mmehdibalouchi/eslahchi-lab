@@ -60,26 +60,26 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="algorithms">About Us</a>
+                    <a class="nav-link" href="/about-us">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Softwares</a>
+                    <a class="nav-link" href="/softwares">Softwares</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">People</a>
+                    <a class="nav-link" href="/people">People</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gallery</a>
+                    <a class="nav-link" href="contact-us">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Videos</a>
-                </li>
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="#">Videos</a>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </nav>
@@ -87,9 +87,12 @@
     <div class="container" style="margin-top:30px">
         @yield('content')
 
-        <div class="jumbotron text-center" style="margin-bottom:0">
-            <p>footer</p>
+        <div class="text-center shadow p-3 mb-3 bg-light bg-dark rounded" style="color: lightgray">
+            +98 21 22431653<br>
+            ch-eslahchi@sbu.ac.ir<br>
+            Copyright 2016 Eslahchi Lab | All Rights Reserved
         </div>
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

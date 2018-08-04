@@ -45,6 +45,12 @@ ul {
     /*margin: 0 auto;*/
 }
 
+.profile-pic {
+    width: 139px;
+    /*height: 220px;*/
+
+}
+
 /*=====================Breadcrumbs-css=======================*/
 .breadcrumbs-css {
     border-top: 1px solid #ddd;

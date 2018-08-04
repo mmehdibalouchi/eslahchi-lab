@@ -3,8 +3,7 @@
 @section('title', 'Page Title')
 
 @section('content')
-    <div class="row">
-        <div class="jumbotron">
+        <div class="shadow p-3 mb-5 rounded bg-light">
             <h2>IMHRC</h2>
             <p></p><p></p><p></p>
             <p>IMHRC (Inter-Module Hub Removal Clustering) is a graph clustering algorithm that is developed based on inter-module hub removal in the weighted graphs which can detect overlapped clusters. Due to these properties, it is especially useful for detecting protein complexes in protein-protein interaction (PPI) networks with associated confidence values. IMHRC by removing some of the inter-module hubs and module hubs, eliminates a meaningful percentage of noise in the dataset and indirectly consider difference occurrence time of the PPI in the network.  After removing hubs, some proteins are considered as seeds. Each seed creates a primary cluster. Then removed module hubs are added to the resulting clusters based on the amount of their interactions with other proteins in the clusters. Clusters are then merged based on their overlaps.</p>
@@ -19,6 +18,4 @@
                 <a href="/softwares/cdap/start"><button type="button" class="btn btn-success">START</button></a>
             </div>
         </div>
-    </div>
-    </div>
 @endsection

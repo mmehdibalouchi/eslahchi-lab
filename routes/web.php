@@ -21,7 +21,16 @@ Route::get('test', function() {
     dd($arr);
 });
 Route::get('', function (){
-    return view('softwares.main');
+    return view('pages.home');
+});
+Route::get('about-us', function (){
+    return view('pages.aboutus');
+});
+Route::get('contact-us', function (){
+    return view('pages.contactus');
+});
+Route::get('people', function (){
+    return view('pages.people');
 });
 Route::prefix('softwares')->group(function (){
     Route::get('', function (){

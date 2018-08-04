@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-sm-1">
         <div class="form-check">
-            <input class="form-check-input position-static" onclick="showParams('{{'algo-'.$name}}')" type="checkbox" id="{{'algo-'.$name}}" value={{$name}} aria-label="...">
+            <input class="form-check-input position-static" onclick="showParams('{{'algo-'.$name}}', 'flex')" type="checkbox" id="{{'algo-'.$name}}" value={{$name}} aria-label="...">
         </div>
     </div>
     <div class="col-sm-3">{{$name}}</div>
