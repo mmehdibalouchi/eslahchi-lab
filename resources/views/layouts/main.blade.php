@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/cards-gallery.css">
     <style>
         .fakeimg {
             height: 200px;
@@ -62,17 +64,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/about-us">About Us</a>
                 </li>
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="#">CV</a>--}}
+                {{--</li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CV</a>
+                    <a class="nav-link" href="/people">People</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/softwares">Softwares</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/people">People</a>
+                    <a class="nav-link" href="/events">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact-us">Contact Us</a>
@@ -95,17 +97,22 @@
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="/js/jquery.backstretch.min.js"></script>
     <script src="/js/app.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script>
-        function testSession() {
-            window.sessionStorage.setItem("algorithms", ["a", "b"])
-        }
+        baguetteBox.run('.cards-gallery', { animation: 'slideIn'});
     </script>
+
+    {{--<script>--}}
+        {{--function testSession() {--}}
+            {{--window.sessionStorage.setItem("algorithms", ["a", "b"])--}}
+        {{--}--}}
+    {{--</script>--}}
 
 </body>
 </html>

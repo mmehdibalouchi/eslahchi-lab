@@ -29,6 +29,9 @@ Route::get('about-us', function (){
 Route::get('contact-us', function (){
     return view('pages.contactus');
 });
+Route::get('events', function (){
+    return view('pages.events');
+});
 Route::get('people', function (){
     return view('pages.people');
 });
