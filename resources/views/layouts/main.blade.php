@@ -55,8 +55,11 @@
         </a>
     </div>
     {{--sticky-top--}}
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
-        <div class="collapse navbar-collapse d-flex justify-content-center" id="collapsibleNavbar">
+    <nav class="navbar navbar-expand-sm  bg-dark navbar-dark ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
