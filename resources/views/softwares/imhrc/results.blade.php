@@ -1,7 +1,7 @@
 <div class="res">
     <div class="jumbotron">
         <div class="row">
-                <div class="jumbotron" style="width: 100%">
+                <div id="result" style="width: 100%">
                     <div class="text-center"><h2>Results</h2></div>
                     <br>
                     <nav>

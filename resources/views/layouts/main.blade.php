@@ -111,11 +111,5 @@
         baguetteBox.run('.cards-gallery', { animation: 'slideIn'});
     </script>
 
-    {{--<script>--}}
-        {{--function testSession() {--}}
-            {{--window.sessionStorage.setItem("algorithms", ["a", "b"])--}}
-        {{--}--}}
-    {{--</script>--}}
-
 </body>
 </html>

@@ -109,6 +109,8 @@ class IMHRCController extends Controller
                                 if (!$request->has('maxComplexFilter') || $size <= intval($request->maxComplexFilter))
                                     File::append('imhrc/' . $now . '/results/' . $algo . '-filter.txt', $line . PHP_EOL);
                     }
+                    if(!File::exists('imhrc/' . $now . '/results/' . $algo . '-filter.txt'))
+                        File::append('imhrc/' . $now . '/results/' . $algo . '-filter.txt', "No Match for your filters!");
                 }
             }
 

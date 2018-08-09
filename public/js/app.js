@@ -129,17 +129,20 @@ function imhrcResult() {
         processData: false,
         beforeSend: function()
         {
-            $(".container")[1].innerHTML = "<center><img src='/images/gifs/loading.gif'></center>";
+            $("#breadcrumb-div")[0].style.display = "none";
+            $("#page-content")[0].innerHTML = "<center><img src='/images/gifs/loading.gif'></center>";
         },
         success:function(data){
             var elements =  $.parseHTML(data);
-            var result = $('.jumbotron', elements);
-            $(".container")[1].innerHTML = result.html();
+            var result = $('#result', elements);
+            $("#page-content")[0].innerHTML = result.html();
         },
         ajaxSuccess: function(){
           console.log("ajaxSuccess");
         },
         error: function (e) {
+        // <div class="alert alert-danger" role="alert"> This is a danger alert—check it out! </div>
+            $("#page-content")[0].innerHTML = "<div class=\"alert alert-danger text-center\" role=\"alert\"> An error has been occurred! </div>";
             console.log(e.responseJSON.exception)
         }
     });
@@ -163,17 +166,18 @@ function dmnResult() {
         processData: false,
         beforeSend: function()
         {
-            $(".container")[1].innerHTML = "<center><img src='/images/gifs/loading.gif'></center>";
+            $("#page-content")[0].innerHTML = "<center><img src='/images/gifs/loading.gif'></center>";
         },
         success:function(data){
             var elements =  $.parseHTML(data);
-            var result = $('.jumbotron', elements);
-            $(".container")[1].innerHTML = result.html();
+            var result = $('#result', elements);
+            $("#page-content")[0].innerHTML = result.html();
         },
         ajaxSuccess: function(){
             console.log("ajaxSuccess");
         },
         error: function (e) {
+            $("#page-content")[0].innerHTML = "<div class=\"alert alert-danger text-center\" role=\"alert\"> An error has been occurred! </div>";
             console.log(e.responseJSON.exception)
         }
     });

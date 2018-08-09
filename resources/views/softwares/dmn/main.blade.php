@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="jumbotron">
+        <div class="shadow p-3 mb-5 rounded bg-light">
             <h2>Decomposition of metabolic networks</h2>
             <p></p><p></p><p></p>
             <h4>Overview</h4>

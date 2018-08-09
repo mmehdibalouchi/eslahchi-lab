@@ -7,10 +7,10 @@
 @endsection
 
 @section('content')
-    <div class="shadow-sm p-1 mb-3 msf-form rounded bg-light">
+    <div class="shadow-sm p-1 mb-3 msf-form rounded bg-light" id="breadcrumb-div">
         @include('components.imhrc.breadcrumbs', ['activeSpan' => 1])
     </div>
-        <div class="shadow p-3 mb-5 msf-form rounded bg-light">
+        <div class="shadow p-3 mb-5 msf-form rounded bg-light" id="page-content">
             <br>
             <form id="form" enctype="multipart/form-data">
                 {{-------- DataSets --------}}

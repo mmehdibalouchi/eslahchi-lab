@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="shadow-lg p-3 mb-5 bg-light rounded" id="page-content">
             <form id="dmn" enctype="multipart/form-data">
                   <div class="form-group">
                         <input onclick="changeInputDisable('customAlgorithm', 'customApproachRadio')" type="checkbox" name="type" id="customApproachRadio" value="custom">
