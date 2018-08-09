@@ -48,7 +48,7 @@ class DMNController extends Controller
         var_dump($resultTable);
         $commandMethods = "\"".implode("\",\"", $request->algorithms)."\"";
         system("cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")' >> log.txt 2>&1", $res);
-        sleep(1);
+//        sleep(1);
         var_dump('res', $res);
         var_dump("system", "cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")'");
         //create result files pathes
