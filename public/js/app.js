@@ -1,6 +1,9 @@
 $(document).ready(function() {
     $('.js-example-basic-single').select2();
 });
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 // (function() {
 //     'use strict';
 //     window.addEventListener('load', function() {
