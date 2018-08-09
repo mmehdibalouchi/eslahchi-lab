@@ -60,15 +60,15 @@ ul {
 
 /*=====================Breadcrumbs-css=======================*/
 .breadcrumbs-css {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    /*border-top: 1px solid #ddd;*/
+    /*border-bottom: 1px solid #ddd;*/
     background-color: #f5f5f5;
     margin-left: 0px;
 }
 
 .breadcrumbs-css ul {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
+    /*border-left: 1px solid #ddd;*/
+    /*border-right: 1px solid #ddd;*/
 }
 
 .breadcrumbs-css li {
@@ -102,11 +102,14 @@ ul {
     display: inline-block;
     width: 22px;
     height: 22px;
-    padding: 2px;
+    /*padding: 2px;*/
     margin-right: 5px;
     border: 2px solid #aaa;
     border-radius: 50%;
     background-color: #fff;
+}
+.breadcrumbs-css ul {
+    margin-bottom: 0rem;
 }
 
 .breadcrumbs-css a.active span:first-child {

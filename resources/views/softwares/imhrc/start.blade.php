@@ -7,7 +7,9 @@
 @endsection
 
 @section('content')
-    @include('components.imhrc.breadcrumbs', ['activeSpan' => 1])
+    <div class="shadow-sm p-1 mb-3 msf-form rounded bg-light">
+        @include('components.imhrc.breadcrumbs', ['activeSpan' => 1])
+    </div>
         <div class="shadow p-3 mb-5 msf-form rounded bg-light">
             <br>
             <form id="form" enctype="multipart/form-data">
@@ -49,7 +51,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-next">Next</button>
+                        <button type="button" onclick="changeAlgorithmParametersDefaults()" class="btn btn-primary btn-next">Next</button>
                     </div>
 
                 </fieldset>
@@ -187,7 +189,7 @@
                             <input type="text" class="form-control" name="maxComplexFilter" id="maxComplexFilter" placeholder="Maximum size of detected cluster">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="STRING ID of your query protein">
+                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="STRING ID of youprotein">
                         </div>
                     </div>
                     <br>
