@@ -145,7 +145,7 @@
                                     <input type="text" class="form-control" name="firstReactions" placeholder="Enter the first reaction">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" name="secondReactions" placeholder="Enter the first reaction">
+                                    <input type="text" class="form-control" name="secondReactions" placeholder="Enter the second reaction">
                                 </div>
                             </div>
                         </div>

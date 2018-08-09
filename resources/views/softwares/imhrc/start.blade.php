@@ -14,8 +14,9 @@
                 {{-------- DataSets --------}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-sm-2">Datasets</div>
+                        <div class="col-sm-2"><b>Datasets</b></div>
                     </div>
+                    <p>Please choose the PPI dataset used for finding protein complexes.</p>
                     <div class="form-check">
                         <input class="form-check-input" onclick="changeInputDisable('customDataset', 'customDatasetRadio'); changeAlgorithmParametersDefaults()" type="radio" name="dataset" id="collins2007Radio" value="collins2007" checked>
                         <label class="form-check-label" for="collins2007Radio">
@@ -56,8 +57,9 @@
                 {{-------- Goldstandards --------}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-sm-2">Gold Standards</div>
+                        <div class="col-sm-2"><b>Gold Standards</b></div>
                     </div>
+                    <p>Please choose the Gold Standard used for assessment of results.</p>
                     <div class="form-check">
                         <input class="form-check-input" onclick="changeInputDisable('customGoldstandard', 'customGoldstandardRadio'); changeAlgorithmParametersDefaults()" type="radio" name="goldstandard" id="mips_3_100Radio" value="mips_3_100" checked>
                         <label class="form-check-label" for="mips_3_100Radio">
@@ -72,7 +74,7 @@
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" onclick="changeInputDisable('customGoldstandard', 'customGoldstandardRadio')" type="radio" name="goldstandard" id="customGoldstandardRadio" value="custom">
-                        <label for="customGoldstandard"></label>
+                        <label for="customGoldstandard">Upload your custom Gold Standard</label>
                         <input type="file" disabled="true" class="form-control-file" id="customGoldstandard">
                     </div>
 
@@ -106,7 +108,7 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            Upload the result of your algorithm
+                            Upload the results of your algorithm
                         </div>
                         <div class="col-sm-9">
                             <div class="form-group">
@@ -125,8 +127,9 @@
                 {{-------- Criterias --------}}
                 <fieldset>
                     <div class="row">
-                        <div class="col-sm-2">Criterias</div>
+                        <div class="col-sm-2"><b>Criteria</b></div>
                     </div>
+                    <p>Please choose the evaluation criteria.</p>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="criteria1" value="ACC">
                         <label class="form-check-label" for="criteria1">
@@ -161,7 +164,7 @@
                     <div class="form-check">
                         <input class="form-check-input" onclick="showParams('thresholds', 'flex')" type="checkbox" id="thresholds">
                         <label class="form-check-label" for="thresholds">
-                            For Specific Thresholds
+                            You can specify a threshhold for criteria
                         </label>
                     </div>
                     <div id="thresholds-params" style="display: none;">
@@ -178,13 +181,13 @@
                     </div>
                     <div id="complexFilters-params" style="display: none;">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="minComplexFileter" id="minComplexFileter" placeholder="Enter minimum number of predicted Complex">
+                            <input type="text" class="form-control" name="minComplexFileter" id="minComplexFileter" placeholder="Minimum size of detected cluster">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="maxComplexFilter" id="maxComplexFilter" placeholder="Enter maximum number of predicted Complex">
+                            <input type="text" class="form-control" name="maxComplexFilter" id="maxComplexFilter" placeholder="Maximum size of detected cluster">
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="Enter Your protein">
+                            <input type="text" class="form-control" name="proteinComplexFilter" id="proteinComplexFilter" placeholder="STRING ID of your query protein">
                         </div>
                     </div>
                     <br>

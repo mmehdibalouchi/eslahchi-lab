@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main', ['activePage' => "aboutus"])
 
 @section('title', 'Page Title')
 
@@ -20,18 +20,9 @@
                 <h5>Head of Laboratory</h5><hr>
                 <div><img src="/images/about-us/eslahchi.jpg" class="img-thumbnail profile-pic " alt="Cinque Terre"></div>
                 <p>Prof. Changiz Eslahchi</p>
-                <p>Our research interests lie in the area of data-driven bioinformatics, creating algorithms to infer and exploit simple models of complex interactions. We also try to understand the biology underlying genetic diseases such as cancer. Most biological functions arise from complex interactions among many components. We use mathematical, statistical, and computational modeling approaches as a way of exploring and answering biological problems. The ultimate goal of our research is to obtain comprehensive understanding of how structures and functions are coded in molecular sequences and how functions of molecules are orchestrated in a cell.</p>
-                <p>
-                    We develop and apply novel computational methods for:
-                </p>
+                <p>Changiz Eslahchi is a professor in the department of computer sciences, school of mathematics, Shahid Beheshti University and a senior researcher at school of biological sciences, Institute for Research in Fundamental Sciences, Tehran, Iran. He is vice dean of the school of mathematics of Shahid Beheshti university now. He currently works mostly on algorithms in bioinformatics and their application to biomedicine. He has also done, especially in the earlier part of his career, some research in graph theory. Changiz has written about 70 research papers. Changiz was a member of the team of introducing bioinformatics in Iran. Changiz and his colleague’s effort led to create the first PhD program in bioinformatics in Iran. He received his MA in mathematics from Shiraz University and his PhD in 1998 from Sharif University of Technology Tehran, Iran.
 
-                <ul>
-                    <li>Assignment of Protein Domains from Structure</li><br>
-                    <li>Predicting Protein Complexes from PPT Networks</li><br>
-                    <li>Determining Cancer Signatures</li><br>
-                    <li>Subcellular Location Prediction</li><br>
-                    and …
-                </ul>
+                </p>
             </div>
             <div class="tab-pane fade" id="nav-interests" role="tabpanel" aria-labelledby="nav-interests-tab">
                 <br><br>

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main', ['activePage' => "home"])
 
 @section('title', 'Page Title')
 

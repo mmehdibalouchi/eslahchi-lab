@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main', ['activePage' => "softwares"])
 
 @section('title', 'Page Title')
 
@@ -21,11 +21,11 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><a href="/softwares/cdap">Complex Detection Analyzer Package (cdap)</a></td>
+                    <td><a href="/softwares/cdap">Complex Detection Analyzer Package (CDAP)</a></td>
                 </tr>
-                <tr>
-                    <td><a href="/softwares/cdap">IMHRC</a></td>
-                </tr>
+                {{--<tr>--}}
+                    {{--<td><a href="/softwares/cdap">IMHRC</a></td>--}}
+                {{--</tr>--}}
                 <tr>
                     <td><a href="/softwares/dmn">Decomposition of metabolic networks</a></td>
                 </tr>

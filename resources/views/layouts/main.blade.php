@@ -62,25 +62,25 @@
         <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link @if (isset($activePage) && $activePage=='home') active @endif" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about-us">About Us</a>
+                    <a class="nav-link @if (isset($activePage) && $activePage=='aboutus') active @endif" href="/about-us">About Us</a>
                 </li>
                 {{--<li class="nav-item">--}}
                     {{--<a class="nav-link" href="#">CV</a>--}}
                 {{--</li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/people">People</a>
+                    <a class="nav-link @if (isset($activePage) && $activePage=='people') active @endif" href="/people">People</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/softwares">Softwares</a>
+                    <a class="nav-link @if (isset($activePage) && $activePage=='softwares') active @endif" href="/softwares">Softwares</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/events">Events</a>
+                    <a class="nav-link @if (isset($activePage) && $activePage=='events') active @endif" href="/events">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact-us">Contact Us</a>
+                    <a class="nav-link @if (isset($activePage) && $activePage=='contactus') active @endif"  href="/contact-us">Contact Us</a>
                 </li>
                 {{--<li class="nav-item">--}}
                     {{--<a class="nav-link" href="#">Videos</a>--}}

@@ -20,7 +20,7 @@ div , fieldset{
     width: 100px;
 }
 
-.msf-form form fieldset { display: none; overflow: hidden; }
+.msf-form form fieldset { display: none;}
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 *, *:before, *:after {
