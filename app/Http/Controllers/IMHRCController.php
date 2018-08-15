@@ -121,10 +121,11 @@ class IMHRCController extends Controller
         if($request->has("criteriatsh"))
             $pythonCommand = $pythonCommand.' threshold='.$request->criteriatsh;
         var_dump($pythonCommand);
-        system($pythonCommand. ' >> ../runs/'.$now.'/log.txt 2>&1', $res);
+        system($pythonCommand, $res);
         sleep(3);
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/results', 'imhrc/'.$now.'/results');
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', 'imhrc/'.$now.'/results');
+        File::deleteDirectory('../storage/app/softwares/imhrc/runs/'.$now);
         var_dump($res);
         $criteriasInput = explode(",", $request->criterias);
         foreach ($criteriasInput as $cri) {
