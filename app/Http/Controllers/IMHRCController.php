@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -32,6 +33,8 @@ class IMHRCController extends Controller
     public function process(Request $request)
     {
         $now = microtime(true);
+        $dt = Carbon::now();
+        Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'process started at: '.$dt->toDateTimeString());
         Storage::copy('softwares/imhrc/source/MyClusteringPackage51.jar', 'softwares/imhrc/runs/'.$now.'/MyClusteringPackage51.jar');
         if(File::exists('../storage/app/softwares/imhrc/source/programsFile'))
             File::copyDirectory('../storage/app/softwares/imhrc/source/programsFile', '../storage/app/softwares/imhrc/runs/'.$now.'/programsFile');
@@ -82,7 +85,10 @@ class IMHRCController extends Controller
                 Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
             }
         }
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt >> log.txt 2>&1', $javaCommandResult);
+//        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt >> log.txt 2>&1', $javaCommandResult);
+        Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package started at: '.Carbon::now()->toDateTimeString());
+        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
+        Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package ended at: '.Carbon::now()->toDateTimeString());
         var_dump('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
         Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
         File::makedirectory('imhrc/'.$now);
@@ -100,6 +106,7 @@ class IMHRCController extends Controller
 
                 var_dump($address);
                 if($request->has('complexFilters') && $request->complexFilters) {
+                    Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'Filtering for algorithms at: '.Carbon::now()->toDateTimeString());
                     $res = explode("\n", Storage::get($address));
                     foreach ($res as $line) {
                         $proteins = explode("\t", $line);
@@ -121,7 +128,9 @@ class IMHRCController extends Controller
         if($request->has("criteriatsh"))
             $pythonCommand = $pythonCommand.' threshold='.$request->criteriatsh;
         var_dump($pythonCommand);
+        Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'python system coommand started at: '.Carbon::now()->toDateTimeString());
         system($pythonCommand, $res);
+        Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'python system coommand ended at: '.Carbon::now()->toDateTimeString());
         sleep(3);
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/results', 'imhrc/'.$now.'/results');
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', 'imhrc/'.$now.'/results');
@@ -135,6 +144,7 @@ class IMHRCController extends Controller
 //            var_dump("table", $t);
             $criterias[] = ["value" => $cri, "name" => $this->criterias[$cri], "table" => $t];
         }
+        Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'proccess passed to view at: '.Carbon::now()->toDateTimeString());
         return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/', 'hasFilter' => $request->complexFilters? true: false, 'hasTsh' => $request->criteriatsh? true: false]);
 //        return system();
 //        return $res;
