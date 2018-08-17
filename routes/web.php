@@ -14,7 +14,22 @@
 //Route::get('/softwares/imhrc', function () {
 //    return view('softwares.imhrc.main');
 //});
+Route::prefix('dashboard')->group(function () {
+    Route::get('', function (){
+       return view('layouts.dashboard');
+    });
+    Route::get('login', function () {
+        return view('dashboard.login');
+    });
+    Route::get('forms', function () {
+        return view('dashboard.forms');
+    });
+});
+
 Route::get('test', function() {
+    $dt = \Carbon\Carbon::now();
+//    return $carbon = \Carbon\Carbon::createFromTime("26", "03", "26")->addSecond(-30)->toTimeString();
+
     $arr = explode("\n", File::get('imhrc/1527278624.4628/results/Fmeasure_table.txt'));
     for ($i =0 ; $i<sizeof($arr); $i++)
         $arr[$i] = explode(",", $arr[$i]);
@@ -34,6 +49,9 @@ Route::get('events', function (){
 });
 Route::get('people', function (){
     return view('pages.people');
+});
+Route::get('people/{name}', function ($name){
+    return view('pages.onePeople', ['name' => $name]);
 });
 Route::prefix('softwares')->group(function (){
     Route::get('', function (){

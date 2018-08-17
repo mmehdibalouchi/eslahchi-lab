@@ -22,7 +22,7 @@
                     professor in the department of computer sciences, school of mathematics, Shahid Beheshti University and a senior researcher at school of biological sciences
                     <br>
                     <br>
-                    <button type="button" class="btn btn-outline-secondary">More Info</button>
+                    <a href="/people/eslahchi"><button type="button" class="btn btn-outline-secondary">More Info</button></a>
                 </td>
             </tr>
             <tr>
