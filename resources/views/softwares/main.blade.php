@@ -21,13 +21,17 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><a href="/softwares/cdap">Complex Detection Analyzer Package (CDAP)</a></td>
+                    <td><a href="/softwares/cdap">CDAP: A Complex Detection Analyzer Package</a></td>
                 </tr>
                 <tr><td>Complex Detection Analyzer Package (CADP) helps you to execute protein complex detection methods and compare their results in a quick and compact ways</td></tr>
                 <tr>
-                    <td><a href="/softwares/dmn">Decomposition of metabolic networks</a></td>
+                    <td><a href="/softwares/dmn">DMNP: A Decomposition Of Metabolic Networks Package</a></td>
                 </tr>
                 <tr><td>Metabolic networks can model the behavior of the metabolism in cell</td></tr>
+                <tr>
+                    <td><a href="/softwares/pmlpr ">PMLPR </a></td>
+                </tr>
+                <tr><td>PMLPR (Protein Multi-Location Prediction based on Recommendation system) is a method to predict multiple locations for proteins. PMLPR predicts locations for each protein based on a well-known recommendation method called NBI, and the STRING protein-protein interaction database. For each protein, PMLPR propose a reliability score (the best score is equal to 1).</td></tr>
                 <tr>
                     <td><a href="/softwares/OrthoGNC">OrthoGNC</a></td>
                 </tr>
@@ -103,11 +107,6 @@
                     <td><a href="/softwares/cn ">CN </a></td>
                 </tr>
                 <tr><td>In order to quantitatively evaluate the performance of the CN algorithm, we use simulated dataset which generated from Dream3 (Dialogue for Reverse Engineering Assessments and Methods) size of 10, 50 and 100 and real dataset (SOS DNA repair network with experiment data set in Escherichia coli).</td></tr>
-                <tr>
-                    <td><a href="/softwares/pmlpr ">PMLPR </a></td>
-                </tr>
-                <tr><td>PMLPR (Protein Multi-Location Prediction based on Recommendation system) is a method to predict multiple locations for proteins. PMLPR predicts locations for each protein based on a well-known recommendation method called NBI, and the STRING protein-protein interaction database. For each protein, PMLPR propose a reliability score (the best score is equal to 1).</td></tr>
-
 
                 </tbody>
             </table>
