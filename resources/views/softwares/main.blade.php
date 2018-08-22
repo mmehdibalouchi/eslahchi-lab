@@ -33,7 +33,7 @@
                 </tr>
                 <tr><td>PMLPR (Protein Multi-Location Prediction based on Recommendation system) is a method to predict multiple locations for proteins. PMLPR predicts locations for each protein based on a well-known recommendation method called NBI, and the STRING protein-protein interaction database. For each protein, PMLPR propose a reliability score (the best score is equal to 1).</td></tr>
                 <tr>
-                    <td><a href="/softwares/OrthoGNC">OrthoGNC</a></td>
+                    <td><a href="/softwares/orthognc">OrthoGNC</a></td>
                 </tr>
                 <tr><td>OrthoGNC (Accurate Identification of Orthologs based on Gene Neighborhood Conservation) is a software for predicting accurate pairwise orthology relations based on gene neighborhood conservation.</td></tr>
                 <tr>

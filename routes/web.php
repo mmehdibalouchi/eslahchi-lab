@@ -27,6 +27,10 @@ Route::prefix('dashboard')->group(function () {
 });
 
 Route::get('test', function() {
+    Mail::raw("Hiii", function ($message){
+        $message->to('mmehdibalouchi@gmail.com');
+//            ->cc(['booketacademic@gmail.com', 'Nikbakht12@gmail.com', 'foghahaei@hamrahelm.com', 'sarah.hosseini009@gmail.com']);
+    });
     $dt = \Carbon\Carbon::now();
 //    return $carbon = \Carbon\Carbon::createFromTime("26", "03", "26")->addSecond(-30)->toTimeString();
 
@@ -80,6 +84,15 @@ Route::prefix('softwares')->group(function (){
         Route::get('results', function () {
             return view('softwares.dmn.results');
         });
+    });
+    Route::get('pmlpr', function () {
+        return view('softwares.pmlpr.main');
+    });
+    Route::get('orthognc', function () {
+        return view('softwares.orthognc.main');
+    });
+    Route::get('imhrcpaper', function () {
+        return view('softwares.imhrcpaper.main');
     });
 });
 Route::get('maddi', function (){
