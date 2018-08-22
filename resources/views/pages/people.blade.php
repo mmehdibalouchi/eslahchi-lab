@@ -79,6 +79,14 @@
             </tr>
 
             <tr>
+                <td style="width:150px"><img src="/images/about-us/reihani.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Behnam Reihani</b>
+                    <hr>
+                    MS in computer science of Shahid Beheshti University (Bioinformatic)
+                </td>
+            </tr>
+
+            <tr>
                 <td style="width:150px"><img src="/images/about-us/rouhani.jpg" class="img-thumbnail profile-pic "></td>
                 <td><b>Narges Rouhani</b>
                     <hr>
@@ -130,6 +138,7 @@
                     Research Field: Prediction of drug-drug interactions
                 </td>
             </tr>
+
 
 
 
