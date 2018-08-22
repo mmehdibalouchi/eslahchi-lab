@@ -16,7 +16,7 @@
                 <p>Email: ch-eslahchi@sbu.ac.ir</p>
                 <hr>
                 <div>
-                    <form class="needs-validation was-validated" novalidate>
+                    <form class="needs-validation" novalidate>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationCustom01">First name</label>
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <br>
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        <button class="btn btn-primary" onclick="contactUs()" type="submit">Submit form</button>
                     </form>
                 </div>
             </div>

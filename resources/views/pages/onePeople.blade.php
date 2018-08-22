@@ -13,13 +13,11 @@
             </thead>
             <tbody>
             <tr>
-                <td style="width:150px"><img src="/images/about-us/eslahchi.jpg" class="img-thumbnail profile-pic "></td>
-                <td><b>Changiz Eslahchi</b>
-                    <hr>
+                <td style="width:150px"><img src="/images/about-us/{{$name}}.jpg" class="img-thumbnail profile-pic "></td>
                     {!! file_get_contents("people-description/$name.txt") !!}
-                    <div class="text-center"><a href="/people"><button type="button" class="btn btn-outline-info ">Back</button></a></div>
                 </td>
             </tr>
+            <tr><td colspan="2"><div class="text-center"><a href="/people"><button type="button" class="btn btn-outline-info ">Back</button></a></div></td></tr>
             </tbody>
         </table>
     </div>

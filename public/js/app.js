@@ -4,7 +4,7 @@ $(document).ready(function() {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
-// (function() {
+// $(function() {
 //     'use strict';
 //     window.addEventListener('load', function() {
 //         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -181,6 +181,20 @@ function dmnResult() {
             console.log(e.responseJSON.exception)
         }
     });
+}
+
+function contactUs() {
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        // form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+        }, false);
+    // });
 }
 
 $('.msf-form form fieldset:first-child').fadeIn('slow');

@@ -32,7 +32,7 @@
                     AI student of Tehran university
                     <br>
                     <br>
-                    <button type="button" class="btn btn-outline-secondary">More Info</button>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
                 </td>
             </tr>
             <tr>
@@ -42,7 +42,7 @@
                     Computer Science student in Shahid Beheshti University. Web Developer
                     <br>
                     <br>
-                    <button type="button" class="btn btn-outline-secondary">More Info</button>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
                 </td>
             </tr>
             <tr>
@@ -52,9 +52,86 @@
                     Research Assistant , School of Biological Sciences (2010 - Present )
                     <br>
                     <br>
-                    <button type="button" class="btn btn-outline-secondary">More Info</button>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
                 </td>
             </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/rosaaghdam.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Rosa Aghdam</b>
+                    <hr>
+                    Post-Doctoral Research Fellow of Bioinformatics in the Institute of Research in Fundamental Sciences (IPM)
+                    <br>
+                    <br>
+                    <a href="/people/rosaaghdam"><button type="button" class="btn btn-outline-secondary">More Info</button></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/mirhadi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Mir Hadi Mahmoodi</b>
+                    <hr>
+                    MS in computer science of Shahid Beheshti University
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/rouhani.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Narges Rouhani</b>
+                    <hr>
+                    Graduate student of computer science in Shahid Beheshti University
+                    Interested in bioinformatics and data science.
+                    Her Master's thesis focuses on the classification of cancer molecular subtypes.
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/ahmadi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Ahmadi</b>
+                    <hr>
+                    I am phd student in Bioinformatics in Shahid Beheshti University and researcher in the Institute of Research in Fundamental Sciences (IPM). My interest fields of research are pharmacogenomics, proteomics , hidden markov models and utilizing machine learning and data mining approaches.
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/maryam.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Maryam Mohamadi</b>
+                    <hr>
+                    Masters student in shahid beheshti university
+                    Field of research: drug-drug interaction prediction
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/khodamoradi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Mohammad Amin Khodamoradi</b>
+                    <hr>
+                    Computer Science at Shahid Beheshti University
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/elhamnabian.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Elham nabian</b>
+                    <hr>
+                    Graduate student of computer science (theory of computation) in Shahid Beheshti University
+                    Research Field: Prediction of drug-drug interactions
+                </td>
+            </tr>
+
+
 
             </tbody>
         </table>

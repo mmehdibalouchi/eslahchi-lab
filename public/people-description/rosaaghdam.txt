@@ -1,0 +1,5 @@
+<td><b>Rosa Aghdam</b><hr>
+<p>Rosa received her B.Sc. in Statistiucs  from Shahid Beheshti University and her M.Sc. in Statistics from Tehran University</p>
+<p>
+She was awarded her Ph.D.  from Shahid Beheshti University <a href="http://www.ipm.ac.ir/personalinfo.jsp?PeopleCode=IP1400017">http://www.ipm.ac.ir/personalinfo.jsp?PeopleCode=IP1400017</a>. Rosa Aghdam is Post-Doctoral Research Fellow of Bioinformatics in the Institute of Research in Fundamental Sciences (IPM), where she has been consistently involved in research since 2009.  Her research focuses on Learning Gene Regulatory Networks and detecting significant genes in cancer, Bayesian  Network, System Biology, Hidden Markov Models and Regression Model.
+</p>
