@@ -37,7 +37,7 @@
                 </tr>
                 <tr><td>OrthoGNC (Accurate Identification of Orthologs based on Gene Neighborhood Conservation) is a software for predicting accurate pairwise orthology relations based on gene neighborhood conservation.</td></tr>
                 <tr>
-                    <td><a href="/softwares/imhrc">IMHRC</a></td>
+                    <td><a href="/softwares/imhrcpaper ">IMHRC</a></td>
                 </tr>
                 <tr><td>IMHRC (Inter-Module Hub Removal Clustering) is a graph clustering algorithm that is developed based on inter-module hub removal in the weighted graphs which can detect overlapped clusters. Due to these properties, it is especially useful for detecting protein complexes in protein-protein interaction (PPI) networks with associated confidence values.</td></tr>
                 <tr>

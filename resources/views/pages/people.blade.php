@@ -11,7 +11,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">People</th>
+                <th scope="col">Faculty</th>
             </tr>
             </thead>
             <tbody>
@@ -19,31 +19,14 @@
                 <td style="width:150px"><img src="/images/about-us/eslahchi.jpg" class="img-thumbnail profile-pic "></td>
                 <td><b>Changiz Eslahchi</b>
                     <hr>
-                    professor in the department of computer sciences, school of mathematics, Shahid Beheshti University and a senior researcher at school of biological sciences
+                    Professor in the department of computer sciences, school of mathematics, Shahid Beheshti University and a senior researcher at school of biological sciences
                     <br>
                     <br>
                     <a href="/people/eslahchi"><button type="button" class="btn btn-outline-secondary">More Info</button></a>
                 </td>
             </tr>
             <tr>
-                <td style="width:150px"><img src="/images/about-us/maddi.jpg" class="img-thumbnail profile-pic "></td>
-                <td><b>Ali Maddi</b>
-                    <hr>
-                    AI student of Tehran university
-                    <br>
-                    <br>
-                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
-                </td>
-            </tr>
-            <tr>
-                <td style="width:150px"><img src="/images/about-us/balouchi.jpg" class="img-thumbnail profile-pic "></td>
-                <td><b>Mohammad Mehdi Balouchi</b>
-                    <hr>
-                    Computer Science student in Shahid Beheshti University. Web Developer
-                    <br>
-                    <br>
-                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
-                </td>
+                <th colspan="2" scope="col">Post Docs students</th>
             </tr>
             <tr>
                 <td style="width:150px"><img src="/images/about-us/jahangiri.jpg" class="img-thumbnail profile-pic "></td>
@@ -66,7 +49,59 @@
                     <a href="/people/rosaaghdam"><button type="button" class="btn btn-outline-secondary">More Info</button></a>
                 </td>
             </tr>
+            <tr>
+                <th colspan="2" scope="col">PHD students</th>
+            </tr>
 
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/maddi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Ali Maddi</b>
+                    <hr>
+                    AI student of Tehran university
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/ahmadi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Ahmadi</b>
+                    <hr>
+                    I am phd student in Bioinformatics in Shahid Beheshti University and researcher in the Institute of Research in Fundamental Sciences (IPM). My interest fields of research are pharmacogenomics, proteomics , hidden markov models and utilizing machine learning and data mining approaches.
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/emdadi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Akram emdadi </b>
+                    <hr>
+                    Phd student in Bioinformatics in Shahid Beheshti University and researcher in the Institute of Research in Fundamental Sciences (IPM). Fields of research : Pharmacogenomics, Hidden Markov Models and Metabolic Networks.
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/yassaee.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Fatemeh Yassaee</b>
+                    <hr>
+                    Phd student in Bioinformatics in Shahid Beheshti University and researcher in the Institute of Research in Fundamental Sciences (IPM).
+                    interested in pharmacogenomics, metabolic network and
+                    hidden markov models(HMM)
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2" scope="col">Masters Students</th>
+            </tr>
             <tr>
                 <td style="width:150px"><img src="/images/about-us/mirhadi.jpg" class="img-thumbnail profile-pic "></td>
                 <td><b>Mir Hadi Mahmoodi</b>
@@ -98,18 +133,6 @@
                     {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
                 </td>
             </tr>
-
-            <tr>
-                <td style="width:150px"><img src="/images/about-us/ahmadi.jpg" class="img-thumbnail profile-pic "></td>
-                <td><b>Ahmadi</b>
-                    <hr>
-                    I am phd student in Bioinformatics in Shahid Beheshti University and researcher in the Institute of Research in Fundamental Sciences (IPM). My interest fields of research are pharmacogenomics, proteomics , hidden markov models and utilizing machine learning and data mining approaches.
-                    <br>
-                    <br>
-                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
-                </td>
-            </tr>
-
             <tr>
                 <td style="width:150px"><img src="/images/about-us/maryam.jpg" class="img-thumbnail profile-pic "></td>
                 <td><b>Maryam Mohamadi</b>
@@ -127,6 +150,7 @@
                 <td><b>Mohammad Amin Khodamoradi</b>
                     <hr>
                     Computer Science at Shahid Beheshti University
+                    <a href="/people/khodamoradi"><button type="button" class="btn btn-outline-secondary">More Info</button></a>
                 </td>
             </tr>
 
@@ -139,8 +163,20 @@
                 </td>
             </tr>
 
+            <tr>
+                <th colspan="2" scope="col">Undergraduate Students</th>
+            </tr>
 
-
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/balouchi.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Mohammad Mehdi Balouchi</b>
+                    <hr>
+                        Computer Science student in Shahid Beheshti University. Web Developer
+                    <br>
+                    <br>
+                    {{--<button type="button" class="btn btn-outline-secondary">More Info</button>--}}
+                </td>
+            </tr>
 
             </tbody>
         </table>

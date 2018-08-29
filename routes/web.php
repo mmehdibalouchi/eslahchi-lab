@@ -27,6 +27,20 @@ Route::prefix('dashboard')->group(function () {
 });
 
 Route::get('test', function() {
+    $url = "https://www.topuniversities.com/sites/default/files/qs-rankings-data/379641.txt?_=1535372884005";
+    $curl = curl_init();
+// Set some options - we are passing in a useragent too here
+    curl_setopt_array($curl, array(
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_URL => $url,
+        CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+    ));
+// Send the request & save response to $resp
+    $resp = json_decode(curl_exec($curl));
+// Close request to clear up some resources
+    dd($resp);
+    curl_close($curl);
+
     Mail::raw("Hiii", function ($message){
         $message->to('mmehdibalouchi@gmail.com');
 //            ->cc(['booketacademic@gmail.com', 'Nikbakht12@gmail.com', 'foghahaei@hamrahelm.com', 'sarah.hosseini009@gmail.com']);
@@ -93,6 +107,12 @@ Route::prefix('softwares')->group(function (){
     });
     Route::get('imhrcpaper', function () {
         return view('softwares.imhrcpaper.main');
+    });
+    Route::get('prodomas', function () {
+        return view('softwares.prodomas.main');
+    });
+    Route::get('stone', function () {
+        return view('softwares.stone.main');
     });
 });
 Route::get('maddi', function (){

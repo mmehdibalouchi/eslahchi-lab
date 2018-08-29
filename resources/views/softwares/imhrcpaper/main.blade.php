@@ -46,6 +46,48 @@ color:black">the MIPS catalog of protein complexes and the Gene Ontology based
             <div class="text-center">
                 <a href="http://facultymembers.sbu.ac.ir/eslahchi/Download/PMLPR(Protein-Localization).rar"><button type="button" class="btn btn-primary">Download</button></a>
             </div>
+            <p>The following is the options used to control IMHRC:</p>
+            <code>
+                <p> --back-penalty      set the node back penalty value</p>
+                <p>--black-list        specifies the black list exprestion</p>
+                <p>-d,--min-density       specifies the minimum density of clusters</p>
+                        (default: auto)</p>
+                <p>--debug                  turns on the debug mode</p>
+
+                            --growth-penalty    set the node growth penalty value
+
+                <p>-h,--help                   shows this help message
+
+                                --max-overlap       specifies the maximum allowed overlap between
+
+                    two clusters</p>
+
+                <p>-s,--min-size               specifies the minimum size of clusters
+
+                    -smax,--max-size       specifies the maximum size of clusters</p>
+
+                <p>-v,--version                shows the version number</p>
+            </code>
+            <p>Example: </p>
+            <p>C:\ >java -jar IMHRC-V1.jar collins2007.txt -min-size 3 -max-size 10000 -black-list (0.008,0.012) -max-overlap 0.53 -growth-penalty 2.1 -back-penalty 2 -min-density 0.3</p>
+            <p>You should see the following output:</p>
+            <code>
+                <p>Loaded graph with 1622 nodes and 9074 edges</p>
+
+                <p>[====================] 100% Growing clusters from seeds...</p>
+
+                <p>[====================] 100% Supplementary Growing clusters ...</p>
+
+                <p>[====================] 100% Supplementary Growing clusters ...</p>
+
+                <p>[====================] 100% Finding highly overlapping clusters...</p>
+
+                <p>[====================] 100% Merging highly overlapping clusters...</p>
+
+                <p>New graph with 1622 nodes and 6306 edges has processed</p>
+
+                <p>Detected 188 complexes</p>
+            </code>
         </div>
     </div>
     </div>

@@ -28,11 +28,11 @@
                 <br><br>
                 {{--<ul class="list-unstyled">--}}
                     <li>Finding cancer marker by graph-based analysis.</li><br>
-                    <li>Phylogenetic networks construction.</li><br>
                     <li>Finding modules and decomposing metabolic networks.</li><br>
                     <li>Protein complex prediction in PPI networks.</li><br>
                     <li>Drug-target interaction prediction problem.</li><br>
                     <li>Protein localization prediction problem.</li><br>
+                    <li>Phylogenetic networks construction.</li><br>
                 {{--</ul>--}}
             </div>
             <div class="tab-pane fade" id="nav-background" role="tabpanel" aria-labelledby="nav-background-tab">
@@ -51,9 +51,9 @@
             <div class="tab-pane fade" id="nav-membership" role="tabpanel" aria-labelledby="nav-membership-tab">
                 <br><br>
                 {{--<ul>--}}
-                    <li>Iranian Mathematical Society.</li><br>
                     <li>Iranian Bioinformatics Society.</li><br>
                     <li>International Society for Computational Biology.</li><br>
+                    <li>Iranian Mathematical Society.</li><br>
                 {{--</ul>--}}
             </div>
             <div class="tab-pane fade" id="nav-honors" role="tabpanel" aria-labelledby="nav-honors-tab">
@@ -66,7 +66,7 @@
             </div>
             <div class="tab-pane fade" id="nav-cv" role="tabpanel" aria-labelledby="nav-cv-tab">
                 <br><br>
-                <li><a target="_blank" href="/files/cv/cv-dr-eslahchi.pdf">prof.Eslahchi cv</a></li>
+                <li><a target="_blank" href="/files/cv/cv-dr-eslahchi-new.pdf">prof.Eslahchi cv</a></li>
             </div>
         </div>
     </div>

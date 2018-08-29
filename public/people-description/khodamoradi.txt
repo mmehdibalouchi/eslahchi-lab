@@ -1,0 +1,7 @@
+<td><b>Mohammad Amin Khodamoradi</b><hr>
+<p>
+Master Thesis title:
+ Comparison of machine learning methods in drug-target interaction prediction
+Abstract:
+Computational prediction of drugtarget interactions (DTIs) has became an essential task in the drug discovery process.The search space for interactions by suggesting potential interaction candidates for validation via wet-lab experiments that are well known to be expensive and time-consuming. We aim to provide a comprehensive overview, empirical evaluation on the computational DTI prediction techniques and present suitable category them, to act as a guide and reference for our fellow researchers. Specifically, we first describe the data used in such computational DTI prediction efforts. We then categorize and elaborate the state-of-the-art methods for predicting DTIs. Next, an empirical comparison is performed to demonstrate the prediction performance of some representative methods under different scenarios. We also present interesting findings from our evaluation study, discussing the advantages and disadvantages of each method.
+</p>
