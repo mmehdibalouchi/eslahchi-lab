@@ -10,7 +10,7 @@
                         @if($filter)
                             <a class="nav-item nav-link" id="nav-filters-tab" data-toggle="tab" href="#nav-filters" role="tab" aria-controls="nav-filters" aria-selected="true">Filters Table</a>
                         @endif
-                        <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="true">Graphic Scheme of modules</a>
+                        <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="true">Download the results</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">

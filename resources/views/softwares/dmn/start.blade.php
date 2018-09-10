@@ -75,7 +75,7 @@
 
                 <div class="form-group">
                     <input onclick="showParams('filters')" type="checkbox" name="hasFilter" id="filters" value=true>
-                    <label>Considering to metabolites or reactions</label><br>
+                    <label>Considering two metabolites or reactions</label><br>
                     <div style="display: none" id="filters-params">
                         <div class="form-check form-check-inline">
                             <input onclick="showDiv('metabolites', 'reactions')" class="form-check-input" type="radio" name="filterOption" id="metabolites" value="metabolites">

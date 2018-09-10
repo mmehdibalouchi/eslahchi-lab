@@ -56,7 +56,7 @@ class DMNController extends Controller
             foreach (Storage::files("public/dmn/runs/$now/") as $fileAdr) {
                 $fileAdrArr = explode("/", $fileAdr);
                 $filename = $fileAdrArr[sizeof($fileAdrArr)-1];
-                $resultFiles[] = ["name" => $filename." $filename", "path" => "/storage/dmn/runs/$now/".$filename];
+                $resultFiles[] = ["name" => $filename, "path" => "/storage/dmn/runs/$now/".$filename];
                 $index++;
             }
             var_dump("after");
