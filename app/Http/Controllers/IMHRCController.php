@@ -33,12 +33,18 @@ class IMHRCController extends Controller
     public function process(Request $request)
     {
         $now = microtime(true);
+        //lod time directory
         $dt = Carbon::now();
+        //log
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'process started at: '.$dt->toDateTimeString());
+        //copy java source tu run directory
         Storage::copy('softwares/imhrc/source/MyClusteringPackage51.jar', 'softwares/imhrc/runs/'.$now.'/MyClusteringPackage51.jar');
+        //copy profgramsFile source
         if(File::exists('../storage/app/softwares/imhrc/source/programsFile'))
             File::copyDirectory('../storage/app/softwares/imhrc/source/programsFile', '../storage/app/softwares/imhrc/runs/'.$now.'/programsFile');
+        //copy fake goldstandard
         Storage::copy('softwares/imhrc/goldstandards/test.txt', 'softwares/imhrc/runs/'.$now.'/assets/sourcesofdata/gold_standard/test.txt');
+
         if($request->hasFile('customDataset')) {
             $request->file('customDataset')->storeAs('softwares/imhrc/runs/' . $now . '/dataset/', 'custom.txt');
             $datasetAddress = 'dataset/custom.txt';
@@ -63,8 +69,9 @@ class IMHRCController extends Controller
 //            var_dump($algo);
             if($algo == "custom" && $request->hasFile('customAlgorithm'))
                 $request->file('customAlgorithm')->storeAs('softwares/imhrc/runs/'.$now.'/algorithm/','custom.txt');
-            else
+            else if($algo != "custom")
             {
+                $cashAlgoName = $algo.'-';
                 $line = $this->algorithmsParams[$algo]["command"].' ';
                 $line = $line.$datasetAddress;
                 foreach ($this->algorithmsParams[$algo]["params"] as $name => $id)
@@ -81,30 +88,52 @@ class IMHRCController extends Controller
                      }
                     else
                         $line = $line.' '.'-'.$id.' '.$request->input($algo.'-'.str_replace(" ", "%20", $name), 0);
+
+                     $cashAlgoName = $cashAlgoName.$id[0].'-'.$request->input($algo.'-'.str_replace(" ", "%20", $name), 0).'-';
                 }
-                Storage::append('softwares/imhrc/runs/'.$now.'/input.txt', $line);
+                if(!Storage::exists('public/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$cashAlgoName.'.txt')) {
+                    $this->algorithmsParams[$algo]["cash"] = false;
+                    $this->algorithmsParams[$algo]["cashName"] = $cashAlgoName;
+                    Storage::append('softwares/imhrc/runs/' . $now . '/input.txt', $line);
+                }
+                else {
+                    $this->algorithmsParams[$algo]["cash"] = true;
+                    $this->algorithmsParams[$algo]["cashName"] = $cashAlgoName;
+                }
             }
         }
-//        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt >> log.txt 2>&1', $javaCommandResult);
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package started at: '.Carbon::now()->toDateTimeString());
-        system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
+        if(Storage::exists('softwares/imhrc/runs/'.$now.'/input.txt'))
+            system('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt', $javaCommandResult);
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package ended at: '.Carbon::now()->toDateTimeString());
         var_dump('cd ../storage/app/softwares/imhrc/runs/'.$now.' && java -jar MyClusteringPackage51.jar input.txt');
         Storage::makeDirectory('softwares/imhrc/runs/'.$now.'/results');
-        File::makedirectory('imhrc/'.$now);
-        File::makedirectory('imhrc/'.$now.'/results');
+        Storage::makedirectory('public/imhrc/runs/'.$now);
+        Storage::makedirectory('public/imhrc/runs/'.$now.'/results');
         $algorithmsFiles = '';
         $algorithmOutputs = [];
+
         foreach($algorithms as $algo) {
             if($algo == "custom")
                 $algorithmsFiles = $algorithmsFiles . '../runs/' . $now . '/algorithm/custom.txt';
             else {
-                $address = Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0];
-                $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
-                $addArr = explode("/", $address);
-                $algorithmOutputs[$algo] = $addArr[sizeof($addArr)-2].'/'.$addArr[sizeof($addArr)-1];
+
+                if($this->algorithmsParams[$algo]["cash"]) {
+                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
+                    $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
+                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
+                }
+                else{
+                    $address = Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0];
+                    Storage::copy($address, "public/imhrc/cash/".$request->dataset."/".$request->goldstandard."/".$this->algorithmsParams[$algo]["cashName"].'.txt');
+                    $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
+                    $addArr = explode("/", $address);
+                    $algorithmOutputs[$algo] = 'storage/imhrc/runs/'.$now.'/results/'.$addArr[sizeof($addArr) - 2] . '/' . $addArr[sizeof($addArr) - 1];
+
+                }
 
                 var_dump($address);
+//                ==========================Here is for Complex Filtering======================
                 if($request->has('complexFilters') && $request->complexFilters) {
                     Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'Filtering for algorithms at: '.Carbon::now()->toDateTimeString());
                     $res = explode("\n", Storage::get($address));
@@ -114,17 +143,17 @@ class IMHRCController extends Controller
                         if (!$request->has('proteinComplexFilter') || in_array($request->proteinComplexFilter, $proteins))
                             if (!$request->has('minComplexFileter') || $size >= intval($request->minComplexFileter))
                                 if (!$request->has('maxComplexFilter') || $size <= intval($request->maxComplexFilter))
-                                    File::append('imhrc/' . $now . '/results/' . $algo . '-filter.txt', $line . PHP_EOL);
+                                    Storage::append('public/imhrc/runs/' . $now . '/results/' . $algo . '-filter.txt', $line . PHP_EOL);
                     }
-                    if(!File::exists('imhrc/' . $now . '/results/' . $algo . '-filter.txt'))
-                        File::append('imhrc/' . $now . '/results/' . $algo . '-filter.txt', "No Match for your filters!");
+                    if(!Storage::exists('public/imhrc/runs/' . $now . '/results/' . $algo . '-filter.txt'))
+                        Storage::append('public/imhrc/runs/' . $now . '/results/' . $algo . '-filter.txt', "No Match for your filters!");
                 }
             }
 
         }
         $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
             .' criteria='.$request->input('criterias', 'ACC').' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
-            .' output='.storage_path('app').'/softwares/imhrc/runs/'.$now.'/results/';
+            .' output='.storage_path('app').'/public/imhrc/runs/'.$now.'/results/';
         if($request->has("criteriatsh"))
             $pythonCommand = $pythonCommand.' threshold='.$request->criteriatsh;
         var_dump($pythonCommand);
@@ -132,20 +161,20 @@ class IMHRCController extends Controller
         system($pythonCommand, $res);
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'python system coommand ended at: '.Carbon::now()->toDateTimeString());
         sleep(3);
-        File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/results', 'imhrc/'.$now.'/results');
-        File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', 'imhrc/'.$now.'/results');
-        File::deleteDirectory('../storage/app/softwares/imhrc/runs/'.$now);
+//        Storage::copyDirectory('softwares/imhrc/runs/'.$now.'/results', 'public/imhrc/runs/'.$now.'/results');
+        File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', '../storage/app/public/imhrc/runs/'.$now.'/results');
+//        File::deleteDirectory('../storage/app/softwares/imhrc/runs/'.$now);
         var_dump($res);
         $criteriasInput = explode(",", $request->criterias);
         foreach ($criteriasInput as $cri) {
-            $t = explode("\n", File::get('imhrc/' . $now . '/results/' . $cri . '_table.txt'));
+            $t = explode("\n", Storage::get('public/imhrc/runs/' . $now . '/results/' . $cri . '_table.txt'));
             for ($i =0 ; $i<sizeof($t); $i++)
                 $t[$i] = explode(",", $t[$i]);
 //            var_dump("table", $t);
             $criterias[] = ["value" => $cri, "name" => $this->criterias[$cri], "table" => $t];
         }
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'proccess passed to view at: '.Carbon::now()->toDateTimeString());
-        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'imhrc/'.$now.'/results/', 'hasFilter' => $request->complexFilters? true: false, 'hasTsh' => $request->criteriatsh? true: false]);
+        return view('softwares.imhrc.results', ['criterias' => $criterias, 'algorithmOutputs' => $algorithmOutputs ,'path' => 'storage/imhrc/runs/'.$now.'/results/', 'hasFilter' => $request->complexFilters? true: false, 'hasTsh' => $request->criteriatsh? true: false]);
 //        return system();
 //        return $res;
         return redirect('softwares/imhrc/results');

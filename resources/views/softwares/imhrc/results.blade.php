@@ -100,7 +100,7 @@
                                     <tbody>
                                             @foreach($algorithmOutputs as $algo => $address)
                                                 <tr>
-                                                    <td scope="col"><a href={{"/".$path.$address}} download>{{$algo}}</a></td>
+                                                    <td scope="col"><a href={{"/".$address}} download>{{$algo}}</a></td>
                                                 </tr>
                                             @endforeach
                                             @if($hasFilter == true)
