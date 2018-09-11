@@ -25,8 +25,18 @@ Route::prefix('dashboard')->group(function () {
         return view('dashboard.forms');
     });
 });
-
+Rout::get('kill/{pid}', function($pid){
+   system('kill ' . $pid);
+});
 Route::get('test', function() {
+    $akbar = system('a=$(echo "this is") & echo $a', $gholam);
+    dd($gholam);
+    $gholam  = system('echo $a');
+    dd($gholam);
+    $contents = file_get_contents('pid.txt');
+    $contents = str_replace('4791', '', $contents);
+    file_put_contents('pid.txt', preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $contents));
+    dd(Storage::exists('public/ghol.txt'));
     $url = "https://www.topuniversities.com/sites/default/files/qs-rankings-data/379641.txt?_=1535372884005";
     $curl = curl_init();
 // Set some options - we are passing in a useragent too here
