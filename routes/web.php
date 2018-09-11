@@ -25,7 +25,7 @@ Route::prefix('dashboard')->group(function () {
         return view('dashboard.forms');
     });
 });
-Rout::get('kill/{pid}', function($pid){
+Route::get('kill/{pid}', function($pid){
    system('kill ' . $pid);
 });
 Route::get('test', function() {
