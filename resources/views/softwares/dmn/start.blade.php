@@ -88,20 +88,28 @@
                         <br>
                         <div style="display: none;" id="metabolites-params">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="mullerCheckbox1" value="muller">
-                                <label class="form-check-label" for="mullerCheckbox1">Muller</label>
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="holmeCheckbox1" value="holme">
+                                <label class="form-check-label" for="holmeCheckbox1">Holme</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="muller2_newCheckbox2" value="muller2_new">
-                                <label class="form-check-label" for="muller2_newCheckbox2">Muller2</label>
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="guimeraCheckbox2" value="guimera">
+                                <label class="form-check-label" for="guimeraCheckbox2">Guimera</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="poolmanCheckbox2" value="poolman">
-                                <label class="form-check-label" for="poolmanCheckbox2">Poolman</label>
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="DingCheckbox2" value="Ding">
+                                <label class="form-check-label" for="DingCheckbox2">Ding</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="sridharanCheckbox2" value="sridharan">
-                                <label class="form-check-label" for="sridharanCheckbox2">Sridharan</label>
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="verwoerdCheckbox2" value="verwoerd">
+                                <label class="form-check-label" for="verwoerdCheckbox2">Verwoerd</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="schusterCheckbox2" value="schuster">
+                                <label class="form-check-label" for="schusterCheckbox2">Schuster</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="metabolitesMethods[]" id="newmanCheckbox2" value="newman">
+                                <label class="form-check-label" for="newmanCheckbox2">Newman</label>
                             </div>
                             <br><br>
                             <div class="form-row">
@@ -116,29 +124,22 @@
 
                         <div style="display: none;" id="reactions-params">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="holmeCheckbox1" value="holme">
-                                <label class="form-check-label" for="holmeCheckbox1">Holme</label>
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="mullerCheckbox1" value="muller">
+                                <label class="form-check-label" for="mullerCheckbox1">Muller</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="guimeraCheckbox2" value="guimera">
-                                <label class="form-check-label" for="guimeraCheckbox2">Guimera</label>
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="muller2_newCheckbox2" value="muller2_new">
+                                <label class="form-check-label" for="muller2_newCheckbox2">Muller2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="DingCheckbox2" value="Ding">
-                                <label class="form-check-label" for="DingCheckbox2">Ding</label>
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="poolmanCheckbox2" value="poolman">
+                                <label class="form-check-label" for="poolmanCheckbox2">Poolman</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="verwoerdCheckbox2" value="verwoerd">
-                                <label class="form-check-label" for="verwoerdCheckbox2">Verwoerd</label>
+                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="sridharanCheckbox2" value="sridharan">
+                                <label class="form-check-label" for="sridharanCheckbox2">Sridharan</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="schusterCheckbox2" value="schuster">
-                                <label class="form-check-label" for="schusterCheckbox2">Schuster</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="reactionsMethods[]" id="newmanCheckbox2" value="newman">
-                                <label class="form-check-label" for="newmanCheckbox2">Newman</label>
-                            </div>
+
                             <br><br>
                             <div class="form-row">
                                 <div class="col">
