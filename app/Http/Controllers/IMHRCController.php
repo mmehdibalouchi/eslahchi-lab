@@ -91,7 +91,7 @@ class IMHRCController extends Controller
 
                      $cashAlgoName = $cashAlgoName.$id[0].'-'.$request->input($algo.'-'.str_replace(" ", "%20", $name), 0).'-';
                 }
-                if(!Storage::exists('public/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$cashAlgoName.'.txt')) {
+                if(!Storage::exists('public/imhrc/cash/'.$request->dataset.'/'.$cashAlgoName.'.txt')) {
                     $this->algorithmsParams[$algo]["cash"] = false;
                     $this->algorithmsParams[$algo]["cashName"] = $cashAlgoName;
                     Storage::append('softwares/imhrc/runs/' . $now . '/input.txt', $line);
@@ -122,14 +122,14 @@ class IMHRCController extends Controller
             else {
 
                 if($this->algorithmsParams[$algo]["cash"]) {
-                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
+                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
                     $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
-                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
+                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
                 }
                 else{
                     $address = Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0];
                     Storage::copy($address, "public/imhrc/cash/".$request->dataset."/".$request->goldstandard."/".$this->algorithmsParams[$algo]["cashName"].'.txt');
-                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$request->goldstandard.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
+                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
                     $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
                     $addArr = explode("/", $address);
                     $algorithmOutputs[$algo] = 'storage/imhrc/runs/'.$now.'/results/'.$addArr[sizeof($addArr) - 2] . '/' . $addArr[sizeof($addArr) - 1];
