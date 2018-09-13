@@ -11,6 +11,7 @@
                             <a class="nav-item nav-link" id="nav-filters-tab" data-toggle="tab" href="#nav-filters" role="tab" aria-controls="nav-filters" aria-selected="true">Filters Table</a>
                         @endif
                         <a class="nav-item nav-link" id="nav-download-tab" data-toggle="tab" href="#nav-download" role="tab" aria-controls="nav-download" aria-selected="true">Download the results</a>
+                        <a class="nav-item nav-link" id="nav-gephi-tab" data-toggle="tab" href="#nav-gephi" role="tab" aria-controls="nav-gephi" aria-selected="true">Gephi</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -74,6 +75,10 @@
                             @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="tab-pane text-center fade" id="nav-gephi" role="tabpanel" aria-labelledby="nav-gephi-tab">
+                        <br><br>
+                        <p>you can download gephi software from <a target="_blank" href="/storage/dmn/Instruction for using the gephi software.pdf">here</a></p>
                     </div>
 
                 </div>
