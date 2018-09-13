@@ -11,6 +11,7 @@
                 <a class="nav-item nav-link" id="nav-interests-tab" data-toggle="tab" href="#nav-interests" role="tab" aria-controls="nav-interests" aria-selected="true">Academic Interests</a>
                 <a class="nav-item nav-link" id="nav-membership-tab" data-toggle="tab" href="#nav-membership" role="tab" aria-controls="nav-membership" aria-selected="true">Membership</a>
                 <a class="nav-item nav-link" id="nav-honors-tab" data-toggle="tab" href="#nav-honors" role="tab" aria-controls="nav-honors" aria-selected="true">Honors</a>
+                <a class="nav-item nav-link" id="nav-collaborations-tab" data-toggle="tab" href="#nav-collaborations" role="tab" aria-controls="nav-collaborations" aria-selected="true">Collaborations</a>
                 <a class="nav-item nav-link" id="nav-cv-tab" data-toggle="tab" href="#nav-cv" role="tab" aria-controls="nav-cv" aria-selected="true">CV</a>
             </div>
         </nav>
@@ -63,6 +64,17 @@
                     <li>Got the First place in the Nationwide Entrance Examination for the MS. degree, 1987.</li><br>
                     <li>Got the Top Second Place in the Entrance Examination for the Ph.D. degree of the Department of Mathematical Sciences of Sharif University of Technology, 1995.</li><br>
                 {{--</ul>--}}
+            </div>
+            <div class="tab-pane fade" id="nav-collaborations" role="tabpanel" aria-labelledby="nav-collaborations-tab">
+                <br><br>
+                <dl>
+                <dt>Limsoon Wong</dt>
+                <dd>Professor in the School of Computing at the National University of Singapore (NUS).</dd>
+                <dt>Wing-Kin Sung</dt>
+                <dd>Professor, School of Computing, National University of Singapore</dd>
+                <dt> Xiang Zhang</dt>
+                <dd>Associate professor Shenzhen University</dd>
+                </dl>
             </div>
             <div class="tab-pane fade" id="nav-cv" role="tabpanel" aria-labelledby="nav-cv-tab">
                 <br><br>
