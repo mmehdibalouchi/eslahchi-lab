@@ -168,7 +168,7 @@ class IMHRCController extends Controller
 //        file_put_contents('pid.txt', preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $pidContent));
 
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'python system coommand ended at: '.Carbon::now()->toDateTimeString());
-        sleep(3);
+//        sleep(1);
 //        Storage::copyDirectory('softwares/imhrc/runs/'.$now.'/results', 'public/imhrc/runs/'.$now.'/results');
         File::copyDirectory('../storage/app/softwares/imhrc/runs/'.$now.'/outputs/RawResults', '../storage/app/public/imhrc/runs/'.$now.'/results');
 //        File::deleteDirectory('../storage/app/softwares/imhrc/runs/'.$now);
