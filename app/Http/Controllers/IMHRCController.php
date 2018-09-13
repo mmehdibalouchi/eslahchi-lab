@@ -104,7 +104,8 @@ class IMHRCController extends Controller
         }
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package started at: '.Carbon::now()->toDateTimeString());
         if(Storage::exists('softwares/imhrc/runs/'.$now.'/input.txt')) {
-            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt & echo $! | tee -a pid.txt', $javaCommandResult);
+//            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt & echo $! | tee -a pid.txt', $javaCommandResult);
+            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt &>> log.txt', $javaCommandResult);
 
         }
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package ended at: '.Carbon::now()->toDateTimeString());
@@ -162,9 +163,9 @@ class IMHRCController extends Controller
         var_dump($pythonCommand);
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'python system coommand started at: '.Carbon::now()->toDateTimeString());
         $pythonPid = system($pythonCommand.'& echo $! | tee -a pid.txt', $res);
-        $pidContent = file_get_contents('pid.txt');
-        $pidContent = str_replace($pythonPid, '', $pidContent);
-        file_put_contents('pid.txt', preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $pidContent));
+//        $pidContent = file_get_contents('pid.txt');
+//        $pidContent = str_replace($pythonPid, '', $pidContent);
+//        file_put_contents('pid.txt', preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $pidContent));
 
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'python system coommand ended at: '.Carbon::now()->toDateTimeString());
         sleep(3);
