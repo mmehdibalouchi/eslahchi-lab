@@ -47,11 +47,10 @@ class DMNController extends Controller
         }
         var_dump($resultTable);
         $commandMethods = "\"".implode("\",\"", $request->algorithms)."\"";
-        system("cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")' >> log.txt 2>&1", $res);
+        system("cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")' &>> log.txt", $res);
 //        sleep(1);
         var_dump('res', $res);
         var_dump("system", "cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")'");
-        var_dump(system("cd ../storage/app/softwares/dmn/source/gephi && ls"));
         //create result files pathes
             $index = 0;
             foreach (Storage::files("public/dmn/runs/$now/") as $fileAdr) {
@@ -92,6 +91,6 @@ class DMNController extends Controller
             }
 
         }
-        return view('softwares.dmn.results', ['resultTable' => $resultTable, 'resultFiles' => isset($resultFiles)? $resultFiles: null, 'criterias' => $request->criterias, 'filter' => $filter]);
+        return view('softwares.dmn.results', ['resultTable' => $resultTable, 'resultFiles' => $resultFiles, 'criterias' => $request->criterias, 'filter' => $filter]);
     }
 }
