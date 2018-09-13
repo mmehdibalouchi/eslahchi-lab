@@ -82,7 +82,7 @@ class DMNController extends Controller
                     $second = $request->secondReactions;
                 }
 
-                system("cd ../storage/app/softwares/dmn/source/gephi && python -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
+                system("cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
                 var_dump("filter", "cd ../storage/app/softwares/dmn/source/gephi && python -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
                 $t = explode("\n", File::get('storage/dmn/runs/' . $now . '/filter.txt'));
                 for ($i =0 ; $i<sizeof($t); $i++)
