@@ -128,7 +128,7 @@ class IMHRCController extends Controller
                 }
                 else{
                     $address = Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0];
-                    Storage::copy($address, "public/imhrc/cash/".$request->dataset."/".$request->goldstandard."/".$this->algorithmsParams[$algo]["cashName"].'.txt');
+                    Storage::copy($address, "public/imhrc/cash/".$request->dataset."/".$this->algorithmsParams[$algo]["cashName"].'.txt');
                     $address = 'public/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
                     $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
                     $addArr = explode("/", $address);
