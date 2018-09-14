@@ -136,7 +136,8 @@ class IMHRCController extends Controller
                     $address = 'public/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
                     $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
                     $addArr = explode("/", $address);
-                    $algorithmOutputs[$algo] = 'storage/imhrc/runs/'.$now.'/results/'.$addArr[sizeof($addArr) - 2] . '/' . $addArr[sizeof($addArr) - 1];
+//                    $algorithmOutputs[$algo] = 'storage/imhrc/runs/'.$now.'/results/'.$addArr[sizeof($addArr) - 2] . '/' . $addArr[sizeof($addArr) - 1];
+                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
 
                 }
 
