@@ -42,6 +42,10 @@ class IMHRCController extends Controller
         //copy profgramsFile source
         if(File::exists('../storage/app/softwares/imhrc/source/programsFile'))
             File::copyDirectory('../storage/app/softwares/imhrc/source/programsFile', '../storage/app/softwares/imhrc/runs/'.$now.'/programsFile');
+        if(Storage::exists('softwares/imhrc/source/programsFile/AP/source/apclusterunix64.so'))
+            Storage::copy('softwares/imhrc/source/programsFile/AP/source/apclusterunix64.so', 'softwares/imhrc/runs/'.$now.'/apclusterunix64.so');
+        if(Storage::exists('softwares/imhrc/source/programsFile/AP/source/apcluster'))
+            Storage::copy('softwares/imhrc/source/programsFile/AP/source/apcluster', 'softwares/imhrc/runs/'.$now.'/apcluster');
         //copy fake goldstandard
         Storage::copy('softwares/imhrc/goldstandards/test.txt', 'softwares/imhrc/runs/'.$now.'/assets/sourcesofdata/gold_standard/test.txt');
 
