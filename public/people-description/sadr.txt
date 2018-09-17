@@ -1,0 +1,4 @@
+<td><b>Ahmad Shahir Sadr</b><hr>
+<p>
+My name is Ahmad Shahir Sadr. I am currently a PhD’s student, studying bioinformatics at department of computer sciences, school of mathematics, Shahid Beheshti University. I am particularly interested in Clinical Bioinformatics, Structural Bioinformatics and CADD. I was also a faculty member at the Sabzevar university of Advanced Technology and head of bioinformatics research center of Sbazevar university of medical sciences, where I am developing several multimedia software to simulate clinical process for medical education. My background is in clinical sciences and e-contents education, and I've worked at Novin Danesh Company (ND.Co)  as well as a start-up in business incubator.
+</p>

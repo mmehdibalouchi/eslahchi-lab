@@ -52,7 +52,16 @@
             <tr>
                 <th colspan="2" scope="col">PHD students</th>
             </tr>
-
+            <tr>
+                <td style="width:150px"><img src="/images/about-us/sadr.jpg" class="img-thumbnail profile-pic "></td>
+                <td><b>Ahmad Shahir Sadr</b>
+                    <hr>
+                    Studying bioinformatics at department of computer sciences, school of mathematics, Shahid Beheshti University
+                    <br>
+                    <br>
+                    <a href="/people/sadr"><button type="button" class="btn btn-outline-secondary">More Info</button></a>
+                </td>
+            </tr>
             <tr>
                 <td style="width:150px"><img src="/images/about-us/maddi.jpg" class="img-thumbnail profile-pic "></td>
                 <td><b>Ali Maddi</b>
