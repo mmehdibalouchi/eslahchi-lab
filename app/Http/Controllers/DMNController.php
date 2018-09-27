@@ -22,50 +22,42 @@ class DMNController extends Controller
         $outputResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/results.txt'));
         $outputPvalueResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/pvalue_results.txt'));
         $resultTable = [];
-        foreach ($request->algorithms as $method)
-        {
-            foreach ($request->criterias as $cri)
-            {
-                if(in_array($cri, $pvalueCriterias)) {
+        if($request->has('algorithms') && $request->has('criterias')) {
+            foreach ($request->algorithms as $method) {
+                foreach ($request->criterias as $cri) {
+                    if (in_array($cri, $pvalueCriterias)) {
 //                    var_dump('Hi');
-                    foreach ($outputPvalueResult->$cri as $jsonMethod=> $value) {
+                        foreach ($outputPvalueResult->$cri as $jsonMethod => $value) {
 //                        var_dump("inja umade", $jsonMethod, $value);
-                        if(substr($jsonMethod, 0, strlen($method)) === $method) {
-                            $resultTable[$jsonMethod][$cri] = $value;
+                            if (substr($jsonMethod, 0, strlen($method)) === $method) {
+                                $resultTable[$jsonMethod][$cri] = $value;
+                            }
                         }
-                    }
-                }
-                else {
-                    foreach ($outputResult->$cri as $jsonMethod=> $value) {
-                        if (substr($jsonMethod, 0, strlen($method)) === $method) {
-                            $resultTable[$jsonMethod][$cri] = $value;
+                    } else {
+                        foreach ($outputResult->$cri as $jsonMethod => $value) {
+                            if (substr($jsonMethod, 0, strlen($method)) === $method) {
+                                $resultTable[$jsonMethod][$cri] = $value;
 
+                            }
                         }
                     }
                 }
+                foreach (Storage::files("public/dmn/cash/$request->dataset/") as $fileAdr) {
+                    if (strpos($fileAdr, $method)) {
+                        $fileAdrArr = explode("/", $fileAdr);
+                        $filename = $fileAdrArr[sizeof($fileAdrArr) - 1];
+                        $resultFiles[] = ["name" => $filename, "path" => "/storage/dmn/cash/$request->dataset/" . $filename];
+                    }
+                }
             }
-        }
-        var_dump($resultTable);
-        $commandMethods = "\"".implode("\",\"", $request->algorithms)."\"";
-        system("cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")' &>> log.txt", $res);
-//        sleep(1);
-        var_dump('res', $res);
-        var_dump("system", "cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'import one_program1; one_program1.go(\"$request->dataset\", [$commandMethods], \"../../../../public/dmn/runs/".$now."/\")'");
-        //create result files pathes
-            $index = 0;
-            foreach (Storage::files("public/dmn/runs/$now/") as $fileAdr) {
-                $fileAdrArr = explode("/", $fileAdr);
-                $filename = $fileAdrArr[sizeof($fileAdrArr)-1];
-                $resultFiles[] = ["name" => $filename, "path" => "/storage/dmn/runs/$now/".$filename];
-                $index++;
-            }
+            var_dump($resultTable);
             var_dump("after");
-        foreach ($request->criterias as $cri) {
-            foreach (array_keys($resultTable) as $resultMehotd)
-                if (!isset($resultTable[$resultMehotd][$cri]))
-                    $resultTable[$resultMehotd][$cri] = "-";
+            foreach ($request->criterias as $cri) {
+                foreach (array_keys($resultTable) as $resultMehotd)
+                    if (!isset($resultTable[$resultMehotd][$cri]))
+                        $resultTable[$resultMehotd][$cri] = "-";
+            }
         }
-//        dd($resultFiles);
         $filter = false;
         if($request->has("hasFilter") && $request->hasFilter == "true")
         {
@@ -83,7 +75,6 @@ class DMNController extends Controller
                 }
 
                 system("cd ../storage/app/softwares/dmn/source/gephi && python3.6 -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
-                var_dump("filter", "cd ../storage/app/softwares/dmn/source/gephi && python -c 'from find_module2 import go; go(\"$request->dataset\", [$commandMethods], \"$first\", \"$second\", \"../../../../public/dmn/runs/".$now."/filter.txt\")'");
                 $t = explode("\n", File::get('storage/dmn/runs/' . $now . '/filter.txt'));
                 for ($i =0 ; $i<sizeof($t); $i++)
                     $t[$i] = explode(",", $t[$i]);
@@ -91,6 +82,6 @@ class DMNController extends Controller
             }
 
         }
-        return view('softwares.dmn.results', ['resultTable' => $resultTable, 'resultFiles' => $resultFiles, 'criterias' => $request->criterias, 'filter' => $filter]);
+        return view('softwares.dmn.results', ['resultTable' => isset($resultTable)? $resultTable: false, 'resultFiles' => isset($resultFiles)? $resultFiles: false, 'criterias' => isset($request->criterias)? $request->criterias: false, 'filter' => $filter]);
     }
 }
