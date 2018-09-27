@@ -109,7 +109,7 @@ class IMHRCController extends Controller
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package started at: '.Carbon::now()->toDateTimeString());
         if(Storage::exists('softwares/imhrc/runs/'.$now.'/input.txt')) {
 //            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt & echo $! | tee -a pid.txt', $javaCommandResult);
-            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt &>> log.txt', $javaCommandResult);
+            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt >> log.txt', $javaCommandResult);
 
         }
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package ended at: '.Carbon::now()->toDateTimeString());
@@ -161,7 +161,7 @@ class IMHRCController extends Controller
 
         }
         $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
-            .' criteria='.$request->input('criterias', 'ACC').' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
+            .' criteria='.$request->input('criterias', 'ACC').' goldName='.$request->goldstandard.' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/public/imhrc/runs/'.$now.'/results/';
         if($request->has("criteriatsh"))
             $pythonCommand = $pythonCommand.' threshold='.$request->criteriatsh;
