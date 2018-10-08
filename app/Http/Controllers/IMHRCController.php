@@ -109,7 +109,7 @@ class IMHRCController extends Controller
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package started at: '.Carbon::now()->toDateTimeString());
         if(Storage::exists('softwares/imhrc/runs/'.$now.'/input.txt')) {
 //            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt & echo $! | tee -a pid.txt', $javaCommandResult);
-            system('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt >> log.txt', $javaCommandResult);
+            shell_exec('cd ../storage/app/softwares/imhrc/runs/' . $now . ' && java -jar MyClusteringPackage51.jar input.txt >> log.txt');
 
         }
         Storage::append("softwares/imhrc/logs/".$dt->toDateString()."/".$dt->toTimeString()."-".$now.".txt", 'ali package ended at: '.Carbon::now()->toDateTimeString());
