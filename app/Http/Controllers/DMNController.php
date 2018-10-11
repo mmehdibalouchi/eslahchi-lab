@@ -22,14 +22,16 @@ class DMNController extends Controller
         $metaboliteCriterias = ['modularity', 'efficacy', 'chebi_distance_mf', 'module_count'];
         $reactionCriterias = ['module_count', 'cohesion_coupling', 'efficacy', 'coexpression_of_enzymes', 'go_distance_bp_F', 'go_distance_bp_G', 'go_distance_cc_F', 'go_distance_cc_G', 'go_distance_mf_F', 'go_distance_mf_G'];
 
-        $pvalueCriterias = ['go_distance_bp_F', 'go_distance_bp_G', 'go_distance_cc_F', 'go_distance_cc_G', 'go_distance_mf_F', 'go_distance_mf_G', 'chebi_distance_mf', 'cohesion_coupling', 'coexpression_of_enzymes'];
+//        $pvalueCriterias = ['go_distance_bp_F', 'go_distance_bp_G', 'go_distance_cc_F', 'go_distance_cc_G', 'go_distance_mf_F', 'go_distance_mf_G', 'chebi_distance_mf', 'cohesion_coupling', 'coexpression_of_enzymes'];
+        $pvalueCriterias = [];
         $outputResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/results.txt'));
         $outputPvalueResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/pvalue_results.txt'));
+        $shouldUnset = [];
         $resultTable = [];
         if($request->has('algorithms') && $request->has('criterias')) {
             foreach ($request->algorithms as $method) {
                 foreach ($request->criterias as $cri) {
-                    var_dump($method, $cri, $isMethodReaction[$method], !in_array($cri, $reactionCriterias));
+//                    var_dump($method, $cri, $isMethodReaction[$method], !in_array($cri, $reactionCriterias));
                     if(($isMethodReaction[$method] && !in_array($cri, $reactionCriterias)) || (!$isMethodReaction[$method] && !in_array($cri, $metaboliteCriterias)))
                     {
                         $resultTable[$method][$cri] = "-";
@@ -42,13 +44,16 @@ class DMNController extends Controller
 //                        var_dump("inja umade", $jsonMethod, $value);
                                 if (substr($jsonMethod, 0, strlen($method)) === $method) {
                                     $resultTable[$jsonMethod][$cri] = $value;
+                                    if($jsonMethod != $method)
+                                        $shouldUnset[$method] = true;
                                 }
                             }
                         } else {
                             foreach ($outputResult->$cri as $jsonMethod => $value) {
                                 if (substr($jsonMethod, 0, strlen($method)) === $method) {
                                     $resultTable[$jsonMethod][$cri] = $value;
-
+                                    if($jsonMethod != $method)
+                                        $shouldUnset[$method] = true;
                                 }
                             }
                         }
@@ -65,9 +70,12 @@ class DMNController extends Controller
             var_dump($resultTable);
             var_dump("after");
             foreach ($request->criterias as $cri) {
-                foreach (array_keys($resultTable) as $resultMehotd)
+                foreach (array_keys($resultTable) as $resultMehotd) {
                     if (!isset($resultTable[$resultMehotd][$cri]))
                         $resultTable[$resultMehotd][$cri] = "-";
+                    if(in_array($resultMehotd, array_keys($shouldUnset)))
+                        unset($resultTable[$resultMehotd]);
+                }
             }
         }
         $filter = false;
