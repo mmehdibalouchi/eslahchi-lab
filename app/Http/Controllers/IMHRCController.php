@@ -48,31 +48,39 @@ class IMHRCController extends Controller
             Storage::copy('softwares/imhrc/source/programsFile/AP/source/apcluster', 'softwares/imhrc/runs/'.$now.'/apcluster');
         //copy fake goldstandard
         Storage::copy('softwares/imhrc/goldstandards/test.txt', 'softwares/imhrc/runs/'.$now.'/assets/sourcesofdata/gold_standard/test.txt');
-
+        $datasetName = $request->dataset;
         if($request->hasFile('customDataset')) {
             $request->file('customDataset')->storeAs('softwares/imhrc/runs/' . $now . '/dataset/', 'custom.txt');
-            $datasetAddress = 'dataset/custom.txt';
-            $datasetPyAddress = '../runs/'.$now.'/dataset/custom.txt';
+            $datasetName =  hash_file('md5', "../storage/app/softwares/imhrc/runs/$now/dataset/custom.txt");
+            Storage::move('softwares/imhrc/runs/' . $now . '/dataset/custom.txt', 'softwares/imhrc/runs/' . $now . '/dataset/'.$datasetName.'.txt');
+            $datasetAddress = "dataset/$datasetName.txt";
+            $datasetPyAddress = "../runs/$now/dataset/$datasetName.txt";
         }
         else {
             $datasetAddress = '../../datasets/' . $request->input('dataset', 'collins2007') . '.txt';
             $datasetPyAddress = '../datasets/'.$request->input('dataset', 'collins2007') . '.txt';
         }
 
+        $goldstandardName = $request->goldstandard;
         if($request->hasFile('customGoldstandard')) {
             $request->file('customGoldstandard')->storeAs('softwares/imhrc/runs/' . $now . '/goldstandard/', 'custom.txt');
-            $goldstandardAddress = '../runs/'.$now.'/goldstandard/custom.txt';
+            $goldstandardName =  hash_file('md5', "../storage/app/softwares/imhrc/runs/$now/goldstandard/custom.txt");
+            Storage::move('softwares/imhrc/runs/' . $now . '/goldstandard/custom.txt', 'softwares/imhrc/runs/' . $now . '/goldstandard/'.$goldstandardName.'.txt');
+            $goldstandardAddress = "../runs/$now/goldstandard/$goldstandardName.txt";
         }
         else
             $goldstandardAddress = '../goldstandards/'.$request->input('goldstandard', 'sgd').'.txt';
 
         $algorithms = explode(",", $request->algorithms);
-
+        $customAlgorithName = null;
         foreach ($algorithms as $algo)
         {
 //            var_dump($algo);
-            if($algo == "custom" && $request->hasFile('customAlgorithm'))
-                $request->file('customAlgorithm')->storeAs('softwares/imhrc/runs/'.$now.'/algorithm/','custom.txt');
+            if($algo == "custom" && $request->hasFile('customAlgorithm')) {
+                $request->file('customAlgorithm')->storeAs('softwares/imhrc/runs/' . $now . '/algorithm/', 'custom.txt');
+                $customAlgorithName =  hash_file('md5', "../storage/app/softwares/imhrc/runs/$now/algorithm/custom.txt");
+                Storage::move('softwares/imhrc/runs/' . $now . '/algorithm/custom.txt', 'softwares/imhrc/runs/' . $now . '/algorithm/'.$customAlgorithName.'.txt');
+            }
             else if($algo != "custom")
             {
                 $cashAlgoName = $algo.'-';
@@ -95,7 +103,7 @@ class IMHRCController extends Controller
 
                      $cashAlgoName = $cashAlgoName.$id[0].'-'.$request->input($algo.'-'.str_replace(" ", "%20", $name), 0).'-';
                 }
-                if(!Storage::exists('public/imhrc/cash/'.$request->dataset.'/'.$cashAlgoName.'.txt')) {
+                if(!Storage::exists('public/imhrc/cash/'.$datasetName.'/'.$cashAlgoName.'.txt')) {
                     $this->algorithmsParams[$algo]["cash"] = false;
                     $this->algorithmsParams[$algo]["cashName"] = $cashAlgoName;
                     Storage::append('softwares/imhrc/runs/' . $now . '/input.txt', $line);
@@ -121,23 +129,25 @@ class IMHRCController extends Controller
         $algorithmOutputs = [];
 
         foreach($algorithms as $algo) {
-            if($algo == "custom")
-                $algorithmsFiles = $algorithmsFiles . '../runs/' . $now . '/algorithm/custom.txt';
+            if($algo == "custom") {
+                $algorithmsFiles = $algorithmsFiles . storage_path() . "/app/public/imhrc/cash/$datasetName/$customAlgorithName.txt". ',';
+                Storage::copy('softwares/imhrc/runs/' . $now . '/algorithm/'.$customAlgorithName.'.txt', "public/imhrc/cash/".$datasetName."/".$customAlgorithName.'.txt');
+            }
             else {
 
                 if($this->algorithmsParams[$algo]["cash"]) {
-                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
+                    $address = 'public/imhrc/cash/'.$datasetName.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
                     $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
-                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
+                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$datasetName.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
                 }
                 else{
                     $address = Storage::files('softwares/imhrc/runs/' . $now . '/outputs/RawResults/' . $this->algorithmsParams[$algo]["outputdir"])[0];
-                    Storage::copy($address, "public/imhrc/cash/".$request->dataset."/".$this->algorithmsParams[$algo]["cashName"].'.txt');
-                    $address = 'public/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
+                    Storage::copy($address, "public/imhrc/cash/".$datasetName."/".$this->algorithmsParams[$algo]["cashName"].'.txt');
+                    $address = 'public/imhrc/cash/'.$datasetName.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';
                     $algorithmsFiles = $algorithmsFiles . storage_path() . '/app/' . $address . ',';
                     $addArr = explode("/", $address);
 //                    $algorithmOutputs[$algo] = 'storage/imhrc/runs/'.$now.'/results/'.$addArr[sizeof($addArr) - 2] . '/' . $addArr[sizeof($addArr) - 1];
-                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$request->dataset.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
+                    $algorithmOutputs[$algo] = 'storage/'.'/imhrc/cash/'.$datasetName.'/'.$this->algorithmsParams[$algo]['cashName'].'.txt';;
 
                 }
 
@@ -161,7 +171,7 @@ class IMHRCController extends Controller
 
         }
         $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
-            .' criteria='.$request->input('criterias', 'ACC').' goldName='.$request->goldstandard.' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
+            .' criteria='.$request->input('criterias', 'ACC').' goldName='.$goldstandardName.' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/public/imhrc/runs/'.$now.'/results/';
         if($request->has("criteriatsh"))
             $pythonCommand = $pythonCommand.' threshold='.$request->criteriatsh;
