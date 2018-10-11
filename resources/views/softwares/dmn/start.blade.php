@@ -44,7 +44,7 @@
                             <option value="arabidopsis_irs1597">arabidopsis_irs1597</option>
                             <option value="mbarkeri_iaf692">mbarkeri_iaf692</option>
                             <option value="mus_imm1415">mus_imm1415</option>
-                            <option value="S.cerevisiae (saccaro_ind750)">S.cerevisiae (saccaro_ind750)</option>
+                            <option value="saccaro_ind750">S.cerevisiae (saccaro_ind750)</option>
                         </select>
                         {{--<input type="file" class="form-control-file" id="customDataset">--}}
                         <br>

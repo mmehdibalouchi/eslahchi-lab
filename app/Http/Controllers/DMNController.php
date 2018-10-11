@@ -25,7 +25,7 @@ class DMNController extends Controller
 //        $pvalueCriterias = ['go_distance_bp_F', 'go_distance_bp_G', 'go_distance_cc_F', 'go_distance_cc_G', 'go_distance_mf_F', 'go_distance_mf_G', 'chebi_distance_mf', 'cohesion_coupling', 'coexpression_of_enzymes'];
         $pvalueCriterias = [];
         $outputResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/results.txt'));
-        $outputPvalueResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/pvalue_results.txt'));
+//        $outputPvalueResult = json_decode(Storage::get('softwares/dmn/source/EVAL_RESULTS/'.$request->dataset.'/pvalue_results.txt'));
         $shouldUnset = [];
         $resultTable = [];
         if($request->has('algorithms') && $request->has('criterias')) {
@@ -38,17 +38,17 @@ class DMNController extends Controller
                     }
                     else
                     {
-                        if (in_array($cri, $pvalueCriterias)) {
-//                    var_dump('Hi');
-                            foreach ($outputPvalueResult->$cri as $jsonMethod => $value) {
-//                        var_dump("inja umade", $jsonMethod, $value);
-                                if (substr($jsonMethod, 0, strlen($method)) === $method) {
-                                    $resultTable[$jsonMethod][$cri] = $value;
-                                    if($jsonMethod != $method)
-                                        $shouldUnset[$method] = true;
-                                }
-                            }
-                        } else {
+//                        if (in_array($cri, $pvalueCriterias)) {
+//                            foreach ($outputPvalueResult->$cri as $jsonMethod => $value) {
+//                                if (substr($jsonMethod, 0, strlen($method)) === $method) {
+//                                    $resultTable[$jsonMethod][$cri] = $value;
+//                                    if($jsonMethod != $method)
+//                                        $shouldUnset[$method] = true;
+//                                }
+//                            }
+//                        }
+//                        else
+//                            {
                             foreach ($outputResult->$cri as $jsonMethod => $value) {
                                 if (substr($jsonMethod, 0, strlen($method)) === $method) {
                                     $resultTable[$jsonMethod][$cri] = $value;
@@ -56,7 +56,7 @@ class DMNController extends Controller
                                         $shouldUnset[$method] = true;
                                 }
                             }
-                        }
+//                        }
                     }
                 }
                 foreach (Storage::files("public/dmn/cash/$request->dataset/") as $fileAdr) {
