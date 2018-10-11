@@ -131,6 +131,7 @@ class IMHRCController extends Controller
         foreach($algorithms as $algo) {
             if($algo == "custom") {
                 $algorithmsFiles = $algorithmsFiles . storage_path() . "/app/public/imhrc/cash/$datasetName/$customAlgorithName.txt". ',';
+                if(!Storage::exists("public/imhrc/cash/".$datasetName."/".$customAlgorithName.'.txt'))
                 Storage::copy('softwares/imhrc/runs/' . $now . '/algorithm/'.$customAlgorithName.'.txt', "public/imhrc/cash/".$datasetName."/".$customAlgorithName.'.txt');
             }
             else {
