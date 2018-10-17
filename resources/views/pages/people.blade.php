@@ -188,7 +188,7 @@
             </tr>
 
             <tr>
-                <th colspan="2" scope="col">Alumni</th>
+                <th colspan="2" scope="col">PhD Alumni</th>
             </tr>
             <tr><td colspan="2">Mehdi Mirzaei</td></tr>
             <tr><td colspan="2">Mehnaz Habibi</td></tr>
