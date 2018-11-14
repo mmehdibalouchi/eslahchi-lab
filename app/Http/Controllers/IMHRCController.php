@@ -171,7 +171,7 @@ class IMHRCController extends Controller
             }
 
         }
-        $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python3.6 comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
+        $pythonCommand = 'cd ../storage/app/softwares/imhrc/source && python comparison.py dataset='.$datasetPyAddress.' goldStandard='.$goldstandardAddress
             .' criteria='.$request->input('criterias', 'ACC').' goldName='.$goldstandardName.' algorithmNames='.$request->algorithms.' algorithmFiles='.rtrim($algorithmsFiles, ",")
             .' output='.storage_path('app').'/public/imhrc/runs/'.$now.'/results/';
         if($request->has("criteriatsh"))
